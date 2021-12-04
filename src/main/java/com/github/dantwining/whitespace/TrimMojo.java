@@ -20,34 +20,33 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 import java.io.File;
 
 /**
  * Goal which trims whitespace from all src/.../*.java and xml files.
- *
- * @goal trim
- * @phase process-sources
  */
+@Mojo(name = "trim", defaultPhase = LifecyclePhase.PROCESS_SOURCES, threadSafe = true)
 public class TrimMojo
-		extends AbstractMojo {
-	/**
-	 * Location of the file.
-	 *
-	 * @parameter project.basedir="${project.basedir}/src"
-	 * @required
-	 */
-	private File projectBasedir;
+        extends AbstractMojo {
+    /**
+     * Location of the file.
+     */
+    @Parameter(defaultValue = "${project.basedir}/src", property = "baseDirectory", readonly = true, required = true)
+    private File projectBasedir;
 
-	public void execute()
-			throws MojoExecutionException, MojoFailureException {
+    public void execute()
+            throws MojoExecutionException, MojoFailureException {
 
-		boolean verify = false;
+        boolean verify = false;
 
-		Log mavenLog = getLog();
+        Log mavenLog = getLog();
 
-		WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
 
-	}
+    }
 
 }
