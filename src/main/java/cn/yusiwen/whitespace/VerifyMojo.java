@@ -1,4 +1,4 @@
-package com.github.dantwining.whitespace;
+package cn.yusiwen.whitespace;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.

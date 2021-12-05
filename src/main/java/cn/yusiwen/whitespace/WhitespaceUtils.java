@@ -1,4 +1,4 @@
-package com.github.dantwining.whitespace;
+package cn.yusiwen.whitespace;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +8,7 @@ import org.apache.maven.plugin.logging.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,13 +34,13 @@ public class WhitespaceUtils {
 
             List<String> lines;
             try {
-                lines = FileUtils.readLines(matchingFile, "UTF-8");
+                lines = FileUtils.readLines(matchingFile, StandardCharsets.UTF_8);
             } catch (IOException e) {
                 throw new MojoExecutionException("Failed to read lines from " + matchingFile.getAbsolutePath(), e);
             }
 
             boolean isFileModified = false;
-            List<String> trimmedLines = new ArrayList<String>(lines.size());
+            List<String> trimmedLines = new ArrayList<>(lines.size());
             int lineNumber = 0;
 
             for (String line : lines) {
