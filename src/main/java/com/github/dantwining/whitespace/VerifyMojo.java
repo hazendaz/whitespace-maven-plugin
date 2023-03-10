@@ -45,22 +45,22 @@ import java.io.File;
  */
  @Mojo(name = "verify", defaultPhase = LifecyclePhase.PROCESS_SOURCES, threadSafe = true)
 public class VerifyMojo
-		extends AbstractMojo {
-	/**
-	 * Location of the file.
-	 */
+        extends AbstractMojo {
+    /**
+     * Location of the file.
+     */
     @Parameter(defaultValue="${project.basedir}/src", required = true)
-	private File projectBasedir;
+    private File projectBasedir;
 
-	public void execute()
-			throws MojoExecutionException, MojoFailureException {
+    public void execute()
+            throws MojoExecutionException, MojoFailureException {
 
-		boolean verify = true;
+        boolean verify = true;
 
-		Log mavenLog = getLog();
+        Log mavenLog = getLog();
 
-		WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
 
-	}
+    }
 
 }

@@ -45,22 +45,22 @@ import java.io.File;
  */
 @Mojo(name = "trim", defaultPhase = LifecyclePhase.PROCESS_SOURCES, threadSafe = true)
 public class TrimMojo
-		extends AbstractMojo {
-	/**
-	 * Location of the file.
-	 */
+        extends AbstractMojo {
+    /**
+     * Location of the file.
+     */
     @Parameter(defaultValue="${project.basedir}/src", required = true)
-	private File projectBasedir;
+    private File projectBasedir;
 
-	public void execute()
-			throws MojoExecutionException, MojoFailureException {
+    public void execute()
+            throws MojoExecutionException, MojoFailureException {
 
-		boolean verify = false;
+        boolean verify = false;
 
-		Log mavenLog = getLog();
+        Log mavenLog = getLog();
 
-		WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
 
-	}
+    }
 
 }
