@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class WhitespaceUtils {
+public final class WhitespaceUtils {
 
     private WhitespaceUtils() {
         throw new AssertionError("Utility class: should never be instantiated");
