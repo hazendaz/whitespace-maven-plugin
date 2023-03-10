@@ -19,26 +19,27 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.dantwining.whitespace-maven-plugin</groupId>
+    <parent>
+        <groupId>com.github.hazendaz</groupId>
+        <artifactId>base-parent</artifactId>
+        <version>38</version>
+        <relativePath />
+    </parent>
+
+    <groupId>com.github.hazendaz.maven</groupId>
     <artifactId>whitespace-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
     <version>1.0.5-SNAPSHOT</version>
+
     <name>whitespace-maven-plugin Maven Mojo</name>
     <description>Maven plugin for stripping trailing whitespace errors from java source code</description>
     <url>https://github.com/dantwining/whitespace-maven-plugin</url>
-
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
-    <scm>
-        <connection>scm:git:git@github.com:dantwining/whitespace-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:dantwining/whitespace-maven-plugin.git</developerConnection>
-        <url>https://github.com/dantwining/whitespace-maven-plugin</url>
-    </scm>
 
     <developers>
         <developer>
@@ -48,45 +49,98 @@
         </developer>
     </developers>
 
+    <prerequisites>
+        <maven>3.3.9</maven>
+    </prerequisites>
+
+    <scm>
+        <connection>scm:git:git@github.com:hazendaz/whitespace-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:hazendaz/whitespace-maven-plugin.git</developerConnection>
+        <url>https://github.com/hazendaz/whitespace-maven-plugin</url>
+    </scm>
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/hazendaz/whitespace-maven-plugin/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Github</system>
+        <url>https://github.com/hazendaz/whitespace-maven-plugin/actions</url>
+    </ciManagement>
+    <distributionManagement>
+        <site>
+            <id>gh-pages-scm</id>
+            <name>Whitespace Maven Plugin Site Pages</name>
+            <url>scm:git:ssh://git@github.com/hazendaz/whitespace-maven-plugin.git</url>
+        </site>
+    </distributionManagement>
+
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Checkstyle -->
+        <checkstyle.config>checkstyle-4space.xml</checkstyle.config>
+
+        <!-- Maven Artifacts -->
+        <maven.version>3.9.0</maven.version>
+        <maven-plugin.version>3.7.1</maven-plugin.version>
+
+        <!-- Junit -->
+        <junit.version>5.9.2</junit.version>
+
+        <!-- Targeted patches -->
+        <io.version>2.11.0</io.version>
+        <lang3.version>3.12.0</lang3.version>
+        <slf4j.version>2.0.6</slf4j.version>
     </properties>
+
+    <dependencies>
+        <!-- Maven -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${maven-plugin.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Junit -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Targeted patches -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${io.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${lang3.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>3.0.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.6.4</version>
+                <version>${maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-descriptor</id>
@@ -102,150 +156,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M9</version>
-            </plugin>
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.4.1</version>
-                          <configuration>
-                            <tags>
-                                <tag>
-                                    <name>goal</name>
-                                    <placement>a</placement>
-                                    <head>Goal:</head>
-                                </tag>
-                                <tag>
-                                    <name>phase</name>
-                                    <placement>a</placement>
-                                    <head>Phase:</head>
-                                </tag>
-                                <tag>
-                                    <name>threadSafe</name>
-                                    <placement>a</placement>
-                                    <head>Thread Safe:</head>
-                                </tag>
-                                <tag>
-                                    <name>requiresDependencyResolution</name>
-                                    <placement>a</placement>
-                                    <head>Requires Dependency Resolution:</head>
-                                </tag>
-                                <tag>
-                                    <name>requiresProject</name>
-                                    <placement>a</placement>
-                                    <head>Requires Project:</head>
-                                </tag>
-                            </tags>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>3.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.0.1</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-plugin-api</artifactId>
-            <version>3.8.6</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugin-tools</groupId>
-            <artifactId>maven-plugin-annotations</artifactId>
-            <version>3.6.4</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>5.9.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>
