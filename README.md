@@ -24,7 +24,12 @@ To enable the plugin for every Maven compilation, add the following to your pom 
         </executions>
     </plugin>
 
-Forked usage
+## Requirements ##
+
+- Requires java 8 or better
+- Requires maven 3.3.9 or better
+
+## Forked usage ##
 
 This plugin was originally released [here](https://github.com/dantwining/whitespace-maven-plugin/) and later forked and released [here](https://github.com/yusiwen/whitespace-maven-plugin).  In order to modernize it with newer maven usage, its now released against [here](https://github.com/hazendaz/whitespace-maven-plugin) and will be properly maintained going forwards.
 
