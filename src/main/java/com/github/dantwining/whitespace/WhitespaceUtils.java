@@ -54,7 +54,7 @@ public final class WhitespaceUtils {
                 throw new MojoExecutionException("Failed to read lines from " + matchingFile.getAbsolutePath(), e);
             }
 
-            Boolean isFileModified = false;
+            boolean isFileModified = false;
             List<String> trimmedLines = new ArrayList<>(lines.size());
             int lineNumber = 0;
 
@@ -66,7 +66,7 @@ public final class WhitespaceUtils {
 
                 String trimmedLine = StringUtils.stripEnd(line, null);
 
-                Boolean isLineModified = (!trimmedLine.equals(line));
+                boolean isLineModified = (!trimmedLine.equals(line));
 
                 if(mavenLog.isDebugEnabled()){
                     if(isLineModified){
