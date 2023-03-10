@@ -22,6 +22,8 @@ import org.apache.maven.plugin.logging.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -47,7 +49,7 @@ public class WhitespaceUtils {
 
 			List<String> lines;
 			try {
-				lines = FileUtils.readLines(matchingFile, "UTF-8");
+				lines = Files.readAllLines(matchingFile.toPath(), StandardCharsets.UTF_8);
 			} catch (IOException e) {
 				throw new MojoExecutionException("Failed to read lines from " + matchingFile.getAbsolutePath(), e);
 			}
