@@ -44,6 +44,8 @@ public final class WhitespaceUtils {
 
         Collection<File> matchingFiles = FileUtils.listFiles(searchBaseDirectory, extensions.replace(" ", "").split(","), true);
 
+        List<String> verifyFailed = new ArrayList<>();
+
         for (File matchingFile : matchingFiles) {
             mavenLog.debug("Reading file: " + matchingFile.getAbsolutePath());
 
@@ -82,15 +84,20 @@ public final class WhitespaceUtils {
             if (isFileModified) {
 
                 if (verify) {
-                    throw new MojoFailureException("Trailing whitespace found in " + matchingFile.getAbsolutePath());
-                }
-                try {
-                    FileUtils.writeLines(matchingFile, "UTF-8", trimmedLines);
-                } catch (IOException e) {
-                    throw new MojoExecutionException("Failed to write lines to " + matchingFile.getAbsolutePath(), e);
+                    verifyFailed.add(matchingFile.getAbsolutePath());
+                } else {
+                    try {
+                        FileUtils.writeLines(matchingFile, "UTF-8", trimmedLines);
+                    } catch (IOException e) {
+                        throw new MojoExecutionException("Failed to write lines to " + matchingFile.getAbsolutePath(), e);
+                    }
                 }
 
             }
+        }
+
+        if (!verifyFailed.isEmpty()) {
+            throw new MojoFailureException("Trailing whitespace found in " + verifyFailed);
         }
     }
 
