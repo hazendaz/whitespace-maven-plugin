@@ -23,6 +23,7 @@ import org.apache.maven.plugin.logging.Log;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -87,7 +88,7 @@ public final class WhitespaceUtils {
                     verifyFailed.add(matchingFile.getAbsolutePath());
                 } else {
                     try {
-                        FileUtils.writeLines(matchingFile, "UTF-8", trimmedLines);
+                        Files.write(matchingFile.toPath(), trimmedLines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
                     } catch (IOException e) {
                         throw new MojoExecutionException("Failed to write lines to " + matchingFile.getAbsolutePath(), e);
                     }
