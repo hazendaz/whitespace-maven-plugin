@@ -81,6 +81,7 @@
         <!-- Maven Artifacts -->
         <maven.version>3.9.0</maven.version>
         <maven-plugin.version>3.8.1</maven-plugin.version>
+        <plexus-utils.version>3.5.1</plexus-utils.version>
 
         <!-- Junit -->
         <junit.version>5.9.2</junit.version>
@@ -106,6 +107,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Plexus -->
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-utils</artifactId>
+            <version>${plexus-utils.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Junit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -114,23 +123,19 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Targeted patches -->
+        <!-- Direct Dependencies -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${io.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Targeted patches -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${lang3.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
