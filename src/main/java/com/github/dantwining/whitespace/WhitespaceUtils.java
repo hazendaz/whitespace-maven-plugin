@@ -34,15 +34,15 @@ public final class WhitespaceUtils {
         throw new AssertionError("Utility class: should never be instantiated");
     }
 
-    public static void detectWhitespace(boolean verify, File searchBaseDirectory, Log mavenLog) throws MojoExecutionException, MojoFailureException {
+    public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog) throws MojoExecutionException, MojoFailureException {
 
         if (!searchBaseDirectory.isDirectory()) {
             mavenLog.debug("Skipping non-existent directory: " + searchBaseDirectory.getAbsolutePath());
             return;
         }
+        mavenLog.info("Processing the following extensions: " + extensions.replace(" ", ""));
 
-        String[] extensions = {"java", "scala", "xml", "properties", "groovy", "kt", "yaml", "yml", "md", "sh"};
-        Collection<File> matchingFiles = FileUtils.listFiles(searchBaseDirectory, extensions, true);
+        Collection<File> matchingFiles = FileUtils.listFiles(searchBaseDirectory, extensions.replace(" ", "").split(","), true);
 
         for (File matchingFile : matchingFiles) {
             mavenLog.debug("Reading file: " + matchingFile.getAbsolutePath());

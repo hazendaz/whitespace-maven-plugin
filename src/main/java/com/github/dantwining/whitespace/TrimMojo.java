@@ -52,6 +52,12 @@ public class TrimMojo
     @Parameter(defaultValue="${project.basedir}/src", required = true)
     private File projectBasedir;
 
+    /**
+     * File extensions to process.
+     */
+    @Parameter(defaultValue="css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
+    private String extensions;
+
     public void execute()
             throws MojoExecutionException, MojoFailureException {
 
@@ -59,7 +65,7 @@ public class TrimMojo
 
         Log mavenLog = getLog();
 
-        WhitespaceUtils.detectWhitespace(verify, projectBasedir, mavenLog);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog);
 
     }
 

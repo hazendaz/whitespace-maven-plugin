@@ -2,16 +2,25 @@
 
 The whitespace plugin will remove any trailing whitespace from files in your project.
 
-- java
-- scala
-- xml
-- properties
+Default file extensions:
+
+- css
 - groovy
+- html
+- java
+- js
+- json
 - kt
+- md
+- properties
+- scala
+- sh
+- wsdl
+- xhtml
+- xml
+- xsd
 - yaml
 - yml
-- md
-- sh
 
 ## Usage
 
@@ -34,6 +43,11 @@ To enable the plugin for every Maven compilation, add the following to your pom 
             </execution>
         </executions>
     </plugin>
+
+## Options
+
+- ```projectBasedir``` is defaulted to ${project.basedir}/src and can be overridden.  If 'src' is dropped and simply using basedir, do note that multi module build will effective run more than once against module files.
+- ```entensions``` A comma delimited list of files to format with default of "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml".
 
 ## Requirements ##
 
