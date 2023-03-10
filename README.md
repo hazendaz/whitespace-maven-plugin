@@ -1,6 +1,17 @@
 # whitespace-maven-plugin
 
-The whitespace plugin will remove any trailing whitespace from `.java`, `.xml` and `.scala` files in your project.
+The whitespace plugin will remove any trailing whitespace from files in your project.
+
+- java
+- scala
+- xml
+- properties
+- groovy
+- kt
+- yaml
+- yml
+- md
+- sh
 
 ## Usage
 
