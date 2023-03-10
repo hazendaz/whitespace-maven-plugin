@@ -41,7 +41,7 @@ public final class WhitespaceUtils {
             return;
         }
 
-        String[] extensions = {"java", "scala", "xml"};
+        String[] extensions = {"java", "scala", "xml", "properties", "groovy", "kt", "yaml", "yml", "md", "sh"};
         Collection<File> matchingFiles = FileUtils.listFiles(searchBaseDirectory, extensions, true);
 
         for (File matchingFile : matchingFiles) {
