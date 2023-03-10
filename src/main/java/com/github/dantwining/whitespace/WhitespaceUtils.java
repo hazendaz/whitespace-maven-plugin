@@ -55,7 +55,7 @@ public final class WhitespaceUtils {
             }
 
             Boolean isFileModified = false;
-            List<String> trimmedLines = new ArrayList<String>(lines.size());
+            List<String> trimmedLines = new ArrayList<>(lines.size());
             int lineNumber = 0;
 
             for (String line : lines) {
