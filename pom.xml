@@ -86,10 +86,9 @@
         <!-- Junit -->
         <junit.version>5.9.2</junit.version>
 
-        <!-- Targeted patches -->
+        <!-- Direct Dependencies -->
         <io.version>2.11.0</io.version>
         <lang3.version>3.12.0</lang3.version>
-        <slf4j.version>2.0.6</slf4j.version>
     </properties>
 
     <dependencies>
@@ -130,8 +129,6 @@
             <version>${io.version}</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- Targeted patches -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
