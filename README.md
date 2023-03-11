@@ -64,3 +64,5 @@ Completed patches requested from upstreams.
 
 - https://github.com/dantwining/whitespace-maven-plugin/issues/14
 - https://github.com/dantwining/whitespace-maven-plugin/issues/11
+- https://github.com/dantwining/whitespace-maven-plugin/issues/5
+- All of the second fork were applied except for where that fork locked down ability to override the basedir.  See https://github.com/hazendaz/whitespace-maven-plugin/pull/2 for more details of what was accepted.
