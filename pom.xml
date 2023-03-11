@@ -82,6 +82,9 @@
         <!-- Coverage -->
         <jacoco.minimum.coverage>0.14</jacoco.minimum.coverage>
 
+        <!-- Reproducible Builds -->
+        <project.build.outputTimestamp>1677357408</project.build.outputTimestamp>
+
         <!-- Maven Artifacts -->
         <maven.version>3.9.0</maven.version>
         <maven-plugin.version>3.8.1</maven-plugin.version>
