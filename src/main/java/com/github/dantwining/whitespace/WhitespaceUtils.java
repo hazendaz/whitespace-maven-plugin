@@ -32,7 +32,7 @@ import java.util.List;
 public final class WhitespaceUtils {
 
     private WhitespaceUtils() {
-        throw new AssertionError("Utility class: should never be instantiated");
+        // Do not instantiate
     }
 
     public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog) throws MojoExecutionException, MojoFailureException {
