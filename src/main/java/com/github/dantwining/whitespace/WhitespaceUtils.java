@@ -41,7 +41,7 @@ public final class WhitespaceUtils {
             mavenLog.debug("Skipping non-existent directory: " + searchBaseDirectory.getAbsolutePath());
             return;
         }
-        mavenLog.info("Processing the following extensions: " + extensions.replace(" ", ""));
+        mavenLog.info("Processing the following extensions: " + StringUtils.deleteWhitespace(extensions));
 
         Collection<File> matchingFiles = FileUtils.listFiles(searchBaseDirectory, extensions.replace(" ", "").split(","), true);
 
