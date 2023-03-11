@@ -78,13 +78,18 @@
         <!-- Checkstyle -->
         <checkstyle.config>checkstyle-4space.xml</checkstyle.config>
 
+        <!-- Coverage -->
+        <jacoco.minimum.coverage>0.14</jacoco.minimum.coverage>
+
         <!-- Maven Artifacts -->
         <maven.version>3.9.0</maven.version>
         <maven-plugin.version>3.8.1</maven-plugin.version>
         <plexus-utils.version>3.5.1</plexus-utils.version>
 
         <!-- Junit -->
+        <javabean-tester.version>2.5.1</javabean-tester.version>
         <junit.version>5.9.2</junit.version>
+        <powermock.version>2.0.9</powermock.version>
 
         <!-- Direct Dependencies -->
         <io.version>2.11.0</io.version>
@@ -116,9 +121,21 @@
 
         <!-- Junit -->
         <dependency>
+            <groupId>com.github.hazendaz</groupId>
+            <artifactId>javabean-tester</artifactId>
+            <version>${javabean-tester.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-reflect</artifactId>
+            <version>${powermock.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -154,6 +171,18 @@
                         <id>help-goal</id>
                         <goals>
                             <goal>helpmojo</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
