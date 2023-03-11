@@ -25,11 +25,11 @@ import org.apache.maven.plugins.annotations.Parameter;
 import java.io.File;
 
 /**
- * Goal which trims whitespace from all src/.../*.java and xml files.
+ * Goal which trims whitespace from all requested extension files.
  */
 @Mojo(name = "trim", defaultPhase = LifecyclePhase.PROCESS_SOURCES, threadSafe = true)
-public class TrimMojo
-        extends AbstractMojo {
+public class TrimMojo extends AbstractMojo {
+
     /**
      * Location of the file.
      */
@@ -42,15 +42,10 @@ public class TrimMojo
     @Parameter(defaultValue="css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
 
-    public void execute()
-            throws MojoExecutionException, MojoFailureException {
-
+    public void execute() throws MojoExecutionException, MojoFailureException {
         boolean verify = false;
-
         Log mavenLog = getLog();
-
         WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog);
-
     }
 
 }

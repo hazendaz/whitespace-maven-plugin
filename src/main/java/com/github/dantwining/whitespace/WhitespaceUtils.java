@@ -64,7 +64,7 @@ public final class WhitespaceUtils {
 
             for (String line : lines) {
 
-                if(mavenLog.isDebugEnabled()){
+                if (mavenLog.isDebugEnabled()){
                     lineNumber++;
                 }
 
@@ -72,10 +72,8 @@ public final class WhitespaceUtils {
 
                 boolean isLineModified = (!trimmedLine.equals(line));
 
-                if(mavenLog.isDebugEnabled()){
-                    if(isLineModified){
-                        mavenLog.debug("Whitespace found on line " + lineNumber);
-                    }
+                if (mavenLog.isDebugEnabled() && isLineModified) {
+                    mavenLog.debug("Whitespace found on line " + lineNumber);
                 }
 
                 trimmedLines.add(trimmedLine);
