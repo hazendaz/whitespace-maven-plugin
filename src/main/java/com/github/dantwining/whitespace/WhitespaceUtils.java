@@ -14,28 +14,52 @@
  */
 package com.github.dantwining.whitespace;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+/**
+ * The Class WhitespaceUtils.
+ */
 public final class WhitespaceUtils {
 
+    /**
+     * Instantiates a new whitespace utils.
+     */
     private WhitespaceUtils() {
         // Do not instantiate
     }
 
-    public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog) throws MojoExecutionException, MojoFailureException {
+    /**
+     * Detect whitespace.
+     *
+     * @param verify
+     *            the verify
+     * @param searchBaseDirectory
+     *            the search base directory
+     * @param extensions
+     *            the extensions
+     * @param mavenLog
+     *            the maven log
+     *
+     * @throws MojoExecutionException
+     *             the mojo execution exception
+     * @throws MojoFailureException
+     *             the mojo failure exception
+     */
+    public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog)
+            throws MojoExecutionException, MojoFailureException {
 
         if (!searchBaseDirectory.isDirectory()) {
             mavenLog.debug("Skipping non-existent directory: " + searchBaseDirectory.getAbsolutePath());
@@ -64,7 +88,7 @@ public final class WhitespaceUtils {
 
             for (String line : lines) {
 
-                if (mavenLog.isDebugEnabled()){
+                if (mavenLog.isDebugEnabled()) {
                     lineNumber++;
                 }
 
@@ -87,9 +111,11 @@ public final class WhitespaceUtils {
                     verifyFailed.add(matchingFile.getAbsolutePath());
                 } else {
                     try {
-                        Files.write(matchingFile.toPath(), trimmedLines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
+                        Files.write(matchingFile.toPath(), trimmedLines, StandardCharsets.UTF_8,
+                                StandardOpenOption.TRUNCATE_EXISTING);
                     } catch (IOException e) {
-                        throw new MojoExecutionException("Failed to write lines to " + matchingFile.getAbsolutePath(), e);
+                        throw new MojoExecutionException("Failed to write lines to " + matchingFile.getAbsolutePath(),
+                                e);
                     }
                 }
 

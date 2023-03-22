@@ -22,15 +22,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.powermock.reflect.Whitebox;
 
+/**
+ * The Class VerifyMojoTest.
+ */
 public class VerifyMojoTest {
 
+    /** The mojo. */
     private VerifyMojo mojo;
 
     /**
      * Verify test will pass due to no trailing spaces.
      *
      * @throws MojoExecutionException
+     *             the mojo execution exception
      * @throws MojoFailureException
+     *             the mojo failure exception
      */
     @Test
     void executeTest() throws MojoExecutionException, MojoFailureException {
@@ -44,7 +50,9 @@ public class VerifyMojoTest {
      * Verify test will fail due to trailing spaces.
      *
      * @throws MojoExecutionException
+     *             the mojo execution exception
      * @throws MojoFailureException
+     *             the mojo failure exception
      */
     @Test
     void executeFailureTest() throws MojoExecutionException, MojoFailureException {

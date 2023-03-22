@@ -21,15 +21,21 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.junit.jupiter.api.Test;
 import org.powermock.reflect.Whitebox;
 
+/**
+ * The Class TrimMojoTest.
+ */
 public class TrimMojoTest {
 
+    /** The mojo. */
     private TrimMojo mojo;
 
     /**
      * Trim test will successfully trim files.
      *
      * @throws MojoExecutionException
+     *             the mojo execution exception
      * @throws MojoFailureException
+     *             the mojo failure exception
      */
     @Test
     void executeTest() throws MojoExecutionException, MojoFailureException {

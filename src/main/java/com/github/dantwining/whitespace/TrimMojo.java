@@ -14,6 +14,8 @@
  */
 package com.github.dantwining.whitespace;
 
+import java.io.File;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -21,8 +23,6 @@ import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-
-import java.io.File;
 
 /**
  * Goal which trims whitespace from all requested extension files.
@@ -33,13 +33,13 @@ public class TrimMojo extends AbstractMojo {
     /**
      * Location of the file.
      */
-    @Parameter(defaultValue="${project.basedir}/src", required = true)
+    @Parameter(defaultValue = "${project.basedir}/src", required = true)
     private File projectBasedir;
 
     /**
      * File extensions to process.
      */
-    @Parameter(defaultValue="css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
+    @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
 
     public void execute() throws MojoExecutionException, MojoFailureException {

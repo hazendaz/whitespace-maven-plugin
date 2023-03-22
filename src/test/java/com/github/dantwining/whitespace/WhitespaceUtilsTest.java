@@ -14,12 +14,18 @@
  */
 package com.github.dantwining.whitespace;
 
-import org.junit.jupiter.api.Test;
-
 import com.codebox.bean.JavaBeanTester;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * The Class WhitespaceUtilsTest.
+ */
 public class WhitespaceUtilsTest {
 
+    /**
+     * Javabean tester.
+     */
     @Test
     void javabeanTester() {
         JavaBeanTester.builder(WhitespaceUtils.class).testPrivateConstructor();
