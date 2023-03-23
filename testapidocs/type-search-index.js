@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.github.dantwining.whitespace","l":"TrimMojoTest"},{"p":"com.github.dantwining.whitespace","l":"VerifyMojoTest"},{"p":"com.github.dantwining.whitespace","l":"WhitespaceUtilsTest"}];updateSearchResults();

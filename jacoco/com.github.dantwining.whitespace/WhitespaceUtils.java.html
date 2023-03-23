@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WhitespaceUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">whitespace-maven-plugin Maven Mojo</a> &gt; <a href="index.source.html" class="el_package">com.github.dantwining.whitespace</a> &gt; <span class="el_source">WhitespaceUtils.java</span></div><h1>WhitespaceUtils.java</h1><pre class="source lang-java linenums">/*
+ * whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
+ *
+ * Copyright 2011-2023 dantwining, Hazendaz.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of The Apache Software License,
+ * Version 2.0 which accompanies this distribution, and is available at
+ * https://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ * Contributors:
+ *     dantwining (dantwining).
+ *     Hazendaz (Jeremy Landis).
+ */
+package com.github.dantwining.whitespace;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
+
+/**
+ * The Class WhitespaceUtils.
+ */
+public final class WhitespaceUtils {
+
+    /**
+     * Instantiates a new whitespace utils.
+     */
+    private WhitespaceUtils() {
+        // Do not instantiate
+    }
+
+    /**
+     * Detect whitespace.
+     *
+     * @param verify
+     *            the verify
+     * @param searchBaseDirectory
+     *            the search base directory
+     * @param extensions
+     *            the extensions
+     * @param mavenLog
+     *            the maven log
+     *
+     * @throws MojoExecutionException
+     *             the mojo execution exception
+     * @throws MojoFailureException
+     *             the mojo failure exception
+     */
+    public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog)
+            throws MojoExecutionException, MojoFailureException {
+
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (!searchBaseDirectory.isDirectory()) {</span>
+<span class="nc" id="L65">            mavenLog.debug(&quot;Skipping non-existent directory: &quot; + searchBaseDirectory.getAbsolutePath());</span>
+<span class="nc" id="L66">            return;</span>
+        }
+<span class="fc" id="L68">        String cleanExtensions = StringUtils.deleteWhitespace(extensions);</span>
+<span class="fc" id="L69">        mavenLog.info(&quot;Processing the following extensions: &quot; + cleanExtensions);</span>
+
+<span class="fc" id="L71">        Collection&lt;File&gt; matchingFiles = FileUtils.listFiles(searchBaseDirectory, cleanExtensions.split(&quot;,&quot;), true);</span>
+
+<span class="fc" id="L73">        List&lt;String&gt; verifyFailed = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        for (File matchingFile : matchingFiles) {</span>
+<span class="fc" id="L76">            mavenLog.debug(&quot;Reading file: &quot; + matchingFile.getAbsolutePath());</span>
+
+            List&lt;String&gt; lines;
+            try {
+<span class="fc" id="L80">                lines = Files.readAllLines(matchingFile.toPath(), StandardCharsets.UTF_8);</span>
+<span class="nc" id="L81">            } catch (IOException e) {</span>
+<span class="nc" id="L82">                throw new MojoExecutionException(&quot;Failed to read lines from &quot; + matchingFile.getAbsolutePath(), e);</span>
+<span class="fc" id="L83">            }</span>
+
+<span class="fc" id="L85">            boolean isFileModified = false;</span>
+<span class="fc" id="L86">            List&lt;String&gt; trimmedLines = new ArrayList&lt;&gt;(lines.size());</span>
+<span class="fc" id="L87">            int lineNumber = 0;</span>
+
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            for (String line : lines) {</span>
+
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">                if (mavenLog.isDebugEnabled()) {</span>
+<span class="nc" id="L92">                    lineNumber++;</span>
+                }
+
+<span class="fc" id="L95">                String trimmedLine = StringUtils.stripEnd(line, null);</span>
+
+<span class="fc bfc" id="L97" title="All 2 branches covered.">                boolean isLineModified = (!trimmedLine.equals(line));</span>
+
+<span class="pc bpc" id="L99" title="3 of 4 branches missed.">                if (mavenLog.isDebugEnabled() &amp;&amp; isLineModified) {</span>
+<span class="nc" id="L100">                    mavenLog.debug(&quot;Whitespace found on line &quot; + lineNumber);</span>
+                }
+
+<span class="fc" id="L103">                trimmedLines.add(trimmedLine);</span>
+
+<span class="fc bfc" id="L105" title="All 4 branches covered.">                isFileModified = (isFileModified || isLineModified);</span>
+<span class="fc" id="L106">            }</span>
+
+<span class="fc bfc" id="L108" title="All 2 branches covered.">            if (isFileModified) {</span>
+
+<span class="fc bfc" id="L110" title="All 2 branches covered.">                if (verify) {</span>
+<span class="fc" id="L111">                    verifyFailed.add(matchingFile.getAbsolutePath());</span>
+                } else {
+                    try {
+<span class="fc" id="L114">                        Files.write(matchingFile.toPath(), trimmedLines, StandardCharsets.UTF_8,</span>
+                                StandardOpenOption.TRUNCATE_EXISTING);
+<span class="nc" id="L116">                    } catch (IOException e) {</span>
+<span class="nc" id="L117">                        throw new MojoExecutionException(&quot;Failed to write lines to &quot; + matchingFile.getAbsolutePath(),</span>
+                                e);
+<span class="fc" id="L119">                    }</span>
+                }
+
+            }
+<span class="fc" id="L123">        }</span>
+
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        if (!verifyFailed.isEmpty()) {</span>
+<span class="fc" id="L126">            throw new MojoFailureException(&quot;Trailing whitespace found in &quot; + verifyFailed);</span>
+        }
+<span class="fc" id="L128">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

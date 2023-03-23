@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.github.dantwining.whitespace","c":"TrimMojoTest","l":"TrimMojoTest()","u":"%3Cinit%3E()"},{"p":"com.github.dantwining.whitespace","c":"VerifyMojoTest","l":"VerifyMojoTest()","u":"%3Cinit%3E()"},{"p":"com.github.dantwining.whitespace","c":"WhitespaceUtilsTest","l":"WhitespaceUtilsTest()","u":"%3Cinit%3E()"}];updateSearchResults();
