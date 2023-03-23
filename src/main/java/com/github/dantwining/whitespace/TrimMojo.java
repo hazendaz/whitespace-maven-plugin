@@ -36,15 +36,19 @@ public class TrimMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project.basedir}/src", required = true)
     private File projectBasedir;
 
-    /** Skip run of plugin. */
-    @Parameter(defaultValue = "false", property = "whitespace.skip")
-    private boolean skip;
-
     /**
      * File extensions to process.
      */
     @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
+
+    /**
+     * Skip run of plugin.
+     *
+     * @since 1.2.0
+     */
+    @Parameter(defaultValue = "false", property = "whitespace.skip")
+    private boolean skip;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         // Check if plugin run should be skipped
