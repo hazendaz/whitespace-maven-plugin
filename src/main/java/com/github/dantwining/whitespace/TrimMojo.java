@@ -38,6 +38,8 @@ public class TrimMojo extends AbstractMojo {
 
     /**
      * File extensions to process.
+     *
+     * @since 1.1.0
      */
     @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
