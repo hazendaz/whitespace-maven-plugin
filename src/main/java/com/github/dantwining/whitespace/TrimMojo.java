@@ -36,6 +36,10 @@ public class TrimMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project.basedir}/src", required = true)
     private File projectBasedir;
 
+    /** Skip run of plugin. */
+    @Parameter(defaultValue = "false", property = "whitespace.skip")
+    private boolean skip;
+
     /**
      * File extensions to process.
      */
@@ -43,6 +47,12 @@ public class TrimMojo extends AbstractMojo {
     private String extensions;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
+        // Check if plugin run should be skipped
+        if (this.skip) {
+            getLog().info("Whitespace is skipped");
+            return;
+        }
+
         boolean verify = false;
         Log mavenLog = getLog();
         WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog);
