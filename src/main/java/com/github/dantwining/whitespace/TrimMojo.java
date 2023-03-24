@@ -41,7 +41,7 @@ public class TrimMojo extends AbstractMojo {
      *
      * @since 1.1.0
      */
-    @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
+    @Parameter(defaultValue = "css,groovy,html,java,js,json,jsp,jspx,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
 
     /**
