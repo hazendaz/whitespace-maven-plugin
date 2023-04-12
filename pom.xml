@@ -31,7 +31,7 @@
     <packaging>maven-plugin</packaging>
     <version>1.2.1-SNAPSHOT</version>
 
-    <name>whitespace-maven-plugin Maven Mojo</name>
+    <name>whitespace-maven-plugin</name>
     <description>Maven plugin for stripping trailing whitespace errors from java source code</description>
     <url>https://github.com/dantwining/whitespace-maven-plugin</url>
     <licenses>
