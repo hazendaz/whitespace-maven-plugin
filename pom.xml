@@ -102,6 +102,10 @@
         <!-- Direct Dependencies -->
         <io.version>2.11.0</io.version>
         <lang3.version>3.12.0</lang3.version>
+
+        <!-- Skip formatting plugins that will break test cases and unnecessary in this case. -->
+        <spotless.apply.skip>true</spotless.apply.skip>
+        <whitespace.skip>true</whitespace.skip>
     </properties>
 
     <dependencies>
@@ -170,26 +174,6 @@
     </dependencies>
 
     <build>
-        <!-- Skip formatting plugins that will break test cases and unnecessary in this case. -->
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>com.github.hazendaz.maven</groupId>
-                    <artifactId>whitespace-maven-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>com.diffplug.spotless</groupId>
-                    <artifactId>spotless-maven-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
