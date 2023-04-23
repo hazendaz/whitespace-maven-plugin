@@ -90,7 +90,7 @@
 
         <!-- Maven Artifacts -->
         <maven.version>3.9.1</maven.version>
-        <maven-plugin.version>3.8.1</maven-plugin.version>
+        <maven-plugin.version>3.8.2</maven-plugin.version>
         <plexus-utils.version>3.5.1</plexus-utils.version>
 
         <!-- Junit -->
