@@ -104,7 +104,7 @@ public final class WhitespaceUtils {
 
                 trimmedLines.add(trimmedLine);
 
-                isFileModified = (isFileModified || isLineModified);
+                isFileModified = isFileModified || isLineModified;
             }
 
             if (isFileModified) {
