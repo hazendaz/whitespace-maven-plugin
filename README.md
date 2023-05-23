@@ -33,7 +33,7 @@ To enable the plugin for every Maven compilation, add the following to your pom 
     <plugin>
         <artifactId>whitespace-maven-plugin</artifactId>
         <groupId>com.github.dantwining.whitespace-maven-plugin</groupId>
-        <version>1.1.0</version>
+        <version>1.2.0</version>
         <executions>
             <execution>
                 <phase>process-sources</phase>
