@@ -16,7 +16,7 @@ package com.github.dantwining.whitespace;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -52,14 +52,16 @@ public final class WhitespaceUtils {
      *            the extensions
      * @param mavenLog
      *            the maven log
+     * @param encoding
+     *            the character encoding used for resources
      *
      * @throws MojoExecutionException
      *             the mojo execution exception
      * @throws MojoFailureException
      *             the mojo failure exception
      */
-    public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog)
-            throws MojoExecutionException, MojoFailureException {
+    public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog,
+            String encoding) throws MojoExecutionException, MojoFailureException {
 
         if (!searchBaseDirectory.isDirectory()) {
             mavenLog.debug("Skipping non-existent directory: " + searchBaseDirectory.getAbsolutePath());
@@ -77,7 +79,7 @@ public final class WhitespaceUtils {
 
             List<String> lines;
             try {
-                lines = Files.readAllLines(matchingFile.toPath(), StandardCharsets.UTF_8);
+                lines = Files.readAllLines(matchingFile.toPath(), Charset.forName(encoding));
             } catch (IOException e) {
                 throw new MojoExecutionException("Failed to read lines from " + matchingFile.getAbsolutePath(), e);
             }
@@ -111,7 +113,7 @@ public final class WhitespaceUtils {
                     verifyFailed.add(matchingFile.getAbsolutePath());
                 } else {
                     try {
-                        Files.write(matchingFile.toPath(), trimmedLines, StandardCharsets.UTF_8,
+                        Files.write(matchingFile.toPath(), trimmedLines, Charset.forName(encoding),
                                 StandardOpenOption.TRUNCATE_EXISTING);
                     } catch (IOException e) {
                         throw new MojoExecutionException("Failed to write lines to " + matchingFile.getAbsolutePath(),

@@ -37,6 +37,14 @@ public class TrimMojo extends AbstractMojo {
     private File projectBasedir;
 
     /**
+     * The character encoding scheme to be applied when filtering resources.
+     *
+     * @since 1.3.0
+     */
+    @Parameter(property = "encoding", defaultValue = "${project.build.sourceEncoding}")
+    private String encoding;
+
+    /**
      * File extensions to process.
      *
      * @since 1.1.0
@@ -61,7 +69,7 @@ public class TrimMojo extends AbstractMojo {
 
         boolean verify = false;
         Log mavenLog = getLog();
-        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);
     }
 
 }

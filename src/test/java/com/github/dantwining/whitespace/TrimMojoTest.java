@@ -42,6 +42,7 @@ public class TrimMojoTest {
         mojo = new TrimMojo();
         Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/trim"));
         Whitebox.setInternalState(mojo, "extensions", "xml");
+        Whitebox.setInternalState(mojo, "encoding", "UTF-8");
         mojo.execute();
     }
 

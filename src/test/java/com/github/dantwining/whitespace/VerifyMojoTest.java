@@ -43,6 +43,7 @@ public class VerifyMojoTest {
         mojo = new VerifyMojo();
         Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/verify"));
         Whitebox.setInternalState(mojo, "extensions", "properties");
+        Whitebox.setInternalState(mojo, "encoding", "UTF-8");
         mojo.execute();
     }
 
@@ -59,6 +60,7 @@ public class VerifyMojoTest {
         mojo = new VerifyMojo();
         Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/verify"));
         Whitebox.setInternalState(mojo, "extensions", "xml");
+        Whitebox.setInternalState(mojo, "encoding", "UTF-8");
         Assertions.assertThrows(MojoFailureException.class, () -> {
             mojo.execute();
         });

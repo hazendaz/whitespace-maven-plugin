@@ -37,6 +37,14 @@ public class VerifyMojo extends AbstractMojo {
     private File projectBasedir;
 
     /**
+     * The character encoding scheme to be applied when filtering resources.
+     *
+     * @since 1.3.0
+     */
+    @Parameter(property = "encoding", defaultValue = "${project.build.sourceEncoding}")
+    private String encoding;
+
+    /**
      * File extensions to process.
      */
     @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
@@ -45,7 +53,7 @@ public class VerifyMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         boolean verify = true;
         Log mavenLog = getLog();
-        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);
     }
 
 }
