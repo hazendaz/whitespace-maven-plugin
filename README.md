@@ -51,18 +51,19 @@ To enable the plugin for every Maven compilation, add the following to your pom 
 
 ## Requirements ##
 
-- Requires java 8 or better
-- Requires maven 3.3.9 or better
+- Requires java 8 or better to run
+- Requires maven 3.3.9 or better to run
+- Requires java 11 to build
+- Requires maven 3.9.2 to build
 
 ## Forked usage ##
 
-This plugin was originally released [here](https://github.com/dantwining/whitespace-maven-plugin/) and later forked and released [here](https://github.com/yusiwen/whitespace-maven-plugin).  In order to modernize it with newer maven usage, its now released against [here](https://github.com/hazendaz/whitespace-maven-plugin) and will be properly maintained going forwards.
+This plugin was originally released [dantwining](https://github.com/dantwining/whitespace-maven-plugin/) and later forked and released [yusiwen](https://github.com/yusiwen/whitespace-maven-plugin).  In order to modernize it with newer maven usage, its now released against [hazendaz](https://github.com/hazendaz/whitespace-maven-plugin) and will be properly maintained going forwards.
 
-All items noted on the original and fork will be looked at for addressing here.  This will be updated to note what has been applied from the upstreams once completed.
+All items from [dantwining](https://github.com/dantwining/whitespace-maven-plugin/) have been linked.  Many have been addressed with a few outstanding as of 5/23/2023.
 
-Completed patches requested from upstreams.
+No outstanding items were on [yusiwen](https://github.com/yusiwen/whitespace-maven-plugin) as issues never opened.  However, this was ahead and everything outside of the following was applied.
 
-- https://github.com/dantwining/whitespace-maven-plugin/issues/14
-- https://github.com/dantwining/whitespace-maven-plugin/issues/11
-- https://github.com/dantwining/whitespace-maven-plugin/issues/5
-- All of the second fork were applied except for where that fork locked down ability to override the basedir.  See https://github.com/hazendaz/whitespace-maven-plugin/pull/2 for more details of what was accepted.
+- Fork locked down ability to override the basedir breaking from original and was not accepted into my fork.
+ 
+See https://github.com/hazendaz/whitespace-maven-plugin/pull/2 for more details of what was accepted and why this was not between both forks.
