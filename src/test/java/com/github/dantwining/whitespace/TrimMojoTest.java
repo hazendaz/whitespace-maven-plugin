@@ -46,4 +46,39 @@ public class TrimMojoTest {
         mojo.execute();
     }
 
+    /**
+     * Trim test wrong directory.
+     *
+     * @throws MojoExecutionException
+     *             the mojo execution exception
+     * @throws MojoFailureException
+     *             the mojo failure exception
+     */
+    @Test
+    void executeNoProcessing() throws MojoExecutionException, MojoFailureException {
+        mojo = new TrimMojo();
+        Whitebox.setInternalState(mojo, "projectBasedir", new File("junk"));
+        Whitebox.setInternalState(mojo, "extensions", "xml");
+        Whitebox.setInternalState(mojo, "encoding", "UTF-8");
+        mojo.execute();
+    }
+
+    /**
+     * Trim test will skip processing.
+     *
+     * @throws MojoExecutionException
+     *             the mojo execution exception
+     * @throws MojoFailureException
+     *             the mojo failure exception
+     */
+    @Test
+    void executeSkip() throws MojoExecutionException, MojoFailureException {
+        mojo = new TrimMojo();
+        Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/trim"));
+        Whitebox.setInternalState(mojo, "extensions", "xml");
+        Whitebox.setInternalState(mojo, "encoding", "UTF-8");
+        Whitebox.setInternalState(mojo, "skip", true);
+        mojo.execute();
+    }
+
 }
