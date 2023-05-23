@@ -96,7 +96,7 @@ public final class WhitespaceUtils {
 
                 String trimmedLine = StringUtils.stripEnd(line, null);
 
-                boolean isLineModified = (!trimmedLine.equals(line));
+                boolean isLineModified = !trimmedLine.equals(line);
 
                 if (mavenLog.isDebugEnabled() && isLineModified) {
                     mavenLog.debug("Whitespace found on line " + lineNumber);
