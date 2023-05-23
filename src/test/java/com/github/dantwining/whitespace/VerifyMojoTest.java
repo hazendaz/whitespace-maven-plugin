@@ -25,7 +25,7 @@ import org.powermock.reflect.Whitebox;
 /**
  * The Class VerifyMojoTest.
  */
-class VerifyMojoTest {
+public class VerifyMojoTest {
 
     /** The mojo. */
     private VerifyMojo mojo;
