@@ -80,7 +80,7 @@
         <checkstyle.config>checkstyle-4space.xml</checkstyle.config>
 
         <!-- Coverage -->
-        <jacoco.minimum.coverage>0.14</jacoco.minimum.coverage>
+        <jacoco.minimum.coverage>0.16</jacoco.minimum.coverage>
 
         <!-- Automatic Module Name -->
         <module.name>com.github.hazendaz.maven.whitespace</module.name>
