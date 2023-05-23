@@ -24,7 +24,7 @@ import org.powermock.reflect.Whitebox;
 /**
  * The Class TrimMojoTest.
  */
-public class TrimMojoTest {
+class TrimMojoTest {
 
     /** The mojo. */
     private TrimMojo mojo;
@@ -38,7 +38,7 @@ public class TrimMojoTest {
      *             the mojo failure exception
      */
     @Test
-    void executeTest() throws MojoExecutionException, MojoFailureException {
+    void execute() throws MojoExecutionException, MojoFailureException {
         mojo = new TrimMojo();
         Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/trim"));
         Whitebox.setInternalState(mojo, "extensions", "xml");

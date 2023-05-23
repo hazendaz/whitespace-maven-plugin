@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 /**
  * The Class WhitespaceUtilsTest.
  */
-public class WhitespaceUtilsTest {
+class WhitespaceUtilsTest {
 
     /**
      * Javabean tester.

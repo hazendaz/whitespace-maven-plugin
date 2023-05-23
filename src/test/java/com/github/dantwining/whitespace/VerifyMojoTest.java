@@ -25,7 +25,7 @@ import org.powermock.reflect.Whitebox;
 /**
  * The Class VerifyMojoTest.
  */
-public class VerifyMojoTest {
+class VerifyMojoTest {
 
     /** The mojo. */
     private VerifyMojo mojo;
@@ -39,7 +39,7 @@ public class VerifyMojoTest {
      *             the mojo failure exception
      */
     @Test
-    void executeTest() throws MojoExecutionException, MojoFailureException {
+    void execute() throws MojoExecutionException, MojoFailureException {
         mojo = new VerifyMojo();
         Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/verify"));
         Whitebox.setInternalState(mojo, "extensions", "properties");
