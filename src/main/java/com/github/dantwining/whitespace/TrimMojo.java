@@ -60,6 +60,7 @@ public class TrimMojo extends AbstractMojo {
     @Parameter(defaultValue = "false", property = "whitespace.skip")
     private boolean skip;
 
+    @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         // Check if plugin run should be skipped
         if (this.skip) {

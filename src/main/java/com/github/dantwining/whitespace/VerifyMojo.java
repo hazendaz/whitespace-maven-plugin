@@ -50,6 +50,7 @@ public class VerifyMojo extends AbstractMojo {
     @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
 
+    @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         boolean verify = true;
         Log mavenLog = getLog();
