@@ -51,7 +51,7 @@ To enable the plugin for every Maven compilation, add the following to your pom 
         </executions>
     </plugin>
 
-To run a verification only, the setup is the same with 'verify' mojo instead.
+To run a verification only, the setup is the same with ```verify``` mojo instead.
 
 ## Options
 
