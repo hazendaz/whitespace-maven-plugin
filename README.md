@@ -17,6 +17,8 @@ Default file extensions:
 - java
 - js
 - json
+- jsp
+- jspx
 - kt
 - md
 - properties
