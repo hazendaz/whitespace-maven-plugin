@@ -94,7 +94,7 @@
         <plexus-utils.version>4.0.0</plexus-utils.version>
 
         <!-- Junit -->
-        <bytebuddy.version>1.14.8</bytebuddy.version>
+        <bytebuddy.version>1.14.9</bytebuddy.version>
         <javabean-tester.version>2.6.0</javabean-tester.version>
         <junit.version>5.10.0</junit.version>
         <powermock.version>2.0.9</powermock.version>
