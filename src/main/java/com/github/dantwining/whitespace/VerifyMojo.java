@@ -47,7 +47,7 @@ public class VerifyMojo extends AbstractMojo {
     /**
      * File extensions to process.
      */
-    @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml")
+    @Parameter(defaultValue = "css,groovy,html,java,js,json,kt,kts,md,properties,scala,sh,toml,wsdl,xhtml,xml,xsd,yaml,yml")
     private String extensions;
 
     @Override
