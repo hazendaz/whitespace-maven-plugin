@@ -29,7 +29,7 @@
     <groupId>com.github.hazendaz.maven</groupId>
     <artifactId>whitespace-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.3.1</version>
+    <version>1.3.2-SNAPSHOT</version>
 
     <name>whitespace-maven-plugin</name>
     <description>Maven plugin for stripping trailing whitespace errors from java source code</description>
@@ -57,7 +57,7 @@
         <connection>scm:git:git@github.com:hazendaz/whitespace-maven-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:hazendaz/whitespace-maven-plugin.git</developerConnection>
         <url>https://github.com/hazendaz/whitespace-maven-plugin</url>
-      <tag>whitespace-maven-plugin-1.3.1</tag>
+      <tag>HEAD</tag>
   </scm>
     <issueManagement>
         <system>Github</system>
@@ -86,7 +86,7 @@
         <module.name>com.github.hazendaz.maven.whitespace</module.name>
 
         <!-- Reproducible Builds -->
-        <project.build.outputTimestamp>1701226672</project.build.outputTimestamp>
+        <project.build.outputTimestamp>1701226713</project.build.outputTimestamp>
 
         <!-- Maven Artifacts -->
         <maven.version>3.9.5</maven.version>
