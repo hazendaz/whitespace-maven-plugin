@@ -92,6 +92,7 @@
         <maven.version>3.9.5</maven.version>
         <maven-plugin.version>3.10.2</maven-plugin.version>
         <plexus-utils.version>4.0.0</plexus-utils.version>
+        <plexus-xml.version>3.0.0</plexus-xml.version>
 
         <!-- Junit -->
         <bytebuddy.version>1.14.10</bytebuddy.version>
@@ -129,6 +130,12 @@
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-utils</artifactId>
             <version>${plexus-utils.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-xml</artifactId>
+            <version>${plexus-xml.version}</version>
             <scope>provided</scope>
         </dependency>
 
