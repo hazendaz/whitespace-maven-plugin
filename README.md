@@ -20,10 +20,12 @@ Default file extensions:
 - jsp
 - jspx
 - kt
+- kts
 - md
 - properties
 - scala
 - sh
+- toml
 - wsdl
 - xhtml
 - xml
