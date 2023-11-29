@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VerifyMojo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">whitespace-maven-plugin Maven Mojo</a> &gt; <a href="index.source.html" class="el_package">com.github.dantwining.whitespace</a> &gt; <span class="el_source">VerifyMojo.java</span></div><h1>VerifyMojo.java</h1><pre class="source lang-java linenums">/*
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VerifyMojo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">whitespace-maven-plugin</a> &gt; <a href="index.source.html" class="el_package">com.github.dantwining.whitespace</a> &gt; <span class="el_source">VerifyMojo.java</span></div><h1>VerifyMojo.java</h1><pre class="source lang-java linenums">/*
  * whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
  *
  * Copyright 2011-2023 dantwining, Hazendaz.
@@ -37,16 +37,25 @@ import org.apache.maven.plugins.annotations.Parameter;
     private File projectBasedir;
 
     /**
+     * The character encoding scheme to be applied when filtering resources.
+     *
+     * @since 1.3.0
+     */
+    @Parameter(property = &quot;encoding&quot;, defaultValue = &quot;${project.build.sourceEncoding}&quot;)
+    private String encoding;
+
+    /**
      * File extensions to process.
      */
-    @Parameter(defaultValue = &quot;css,groovy,html,java,js,json,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml&quot;)
+    @Parameter(defaultValue = &quot;css,groovy,html,java,js,json,kt,kts,md,properties,scala,sh,toml,wsdl,xhtml,xml,xsd,yaml,yml&quot;)
     private String extensions;
 
+    @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-<span class="fc" id="L46">        boolean verify = true;</span>
-<span class="fc" id="L47">        Log mavenLog = getLog();</span>
-<span class="fc" id="L48">        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog);</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L55">        boolean verify = true;</span>
+<span class="fc" id="L56">        Log mavenLog = getLog();</span>
+<span class="fc" id="L57">        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);</span>
+<span class="fc" id="L58">    }</span>
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
