@@ -90,7 +90,7 @@
 
         <!-- Maven Artifacts -->
         <maven.version>3.9.6</maven.version>
-        <maven-plugin.version>3.10.2</maven-plugin.version>
+        <maven-plugin.version>3.11.0</maven-plugin.version>
         <plexus-utils.version>4.0.0</plexus-utils.version>
         <plexus-xml.version>3.0.0</plexus-xml.version>
 
