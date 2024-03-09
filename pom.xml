@@ -50,7 +50,7 @@
     </developers>
 
     <prerequisites>
-        <maven>3.3.9</maven>
+        <maven>3.6.3</maven>
     </prerequisites>
 
     <scm>
