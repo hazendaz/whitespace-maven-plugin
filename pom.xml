@@ -96,7 +96,7 @@
 
         <!-- Junit -->
         <bytebuddy.version>1.14.13</bytebuddy.version>
-        <javabean-tester.version>2.6.3</javabean-tester.version>
+        <javabean-tester.version>2.7.0</javabean-tester.version>
         <junit.version>5.10.2</junit.version>
         <powermock.version>2.0.9</powermock.version>
         <slf4j.version>2.0.12</slf4j.version>
