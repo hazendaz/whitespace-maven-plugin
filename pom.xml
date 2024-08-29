@@ -103,7 +103,7 @@
 
         <!-- Direct Dependencies -->
         <io.version>2.16.1</io.version>
-        <lang3.version>3.16.0</lang3.version>
+        <lang3.version>3.17.0</lang3.version>
 
         <!-- Skip formatting plugins that will break test cases and unnecessary in this case. -->
         <spotless.apply.skip>true</spotless.apply.skip>
