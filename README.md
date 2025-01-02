@@ -11,21 +11,44 @@ The whitespace plugin will remove any trailing whitespace from files in your pro
 
 Default file extensions:
 
+- 4gl
+- 42m
+- c
+- cb
+- cfg
+- cpp
 - css
 - groovy
+- dat
+- groovy
+- h
 - html
+- ini
 - java
 - js
 - json
+- jsonp
 - jsp
 - jspx
+- jsx
+- ksh
 - kt
 - kts
 - md
+- mk
+- msg
+- pl
+- pm
 - properties
+- reg
 - scala
+- scss
 - sh
+- sql
 - toml
+- ts
+- tsx
+- wadl
 - wsdl
 - xhtml
 - xml
@@ -42,9 +65,9 @@ The plugin works best if it is run every time during Maven compilation. However,
 To enable the plugin for every Maven compilation, add the following to your pom and run any maven phase that would include the `process-sources` phase:
 
     <plugin>
+        <groupId>com.github.hazendaz.maven</groupId>
         <artifactId>whitespace-maven-plugin</artifactId>
-        <groupId>com.github.dantwining.whitespace-maven-plugin</groupId>
-        <version>1.2.0</version>
+        <version>1.4.0</version>
         <executions>
             <execution>
                 <phase>process-sources</phase>
@@ -60,7 +83,7 @@ To run a verification only, the setup is the same with ```verify``` mojo instead
 ## Options
 
 - ```projectBasedir``` is defaulted to ${project.basedir}/src and can be overridden.  If 'src' is dropped and simply using basedir, do note that multi module build will effective run more than once against module files.
-- ```entensions``` A comma delimited list of files to format with default of "css,groovy,html,java,js,json,jsp,jspx,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml".
+- ```entensions``` A comma delimited list of files to format with default of "4gl,42m,c,cb,cfg,cpp,css,dat,groovy,h,html,ini,java,js,json,jsonp,jsp,jspx,jsx,ksh,kt,kts,md,mk,msg,pl,pm,properties,reg,scala,scss,sh,sql,toml,ts,tsx,wadl,wsdl,xhtml,xml,xsd,yaml,yml".
 - ```encoding``` The encoding to use for the project with default set as ```project.build.sourceEncoding```
 
 ## Requirements ##
