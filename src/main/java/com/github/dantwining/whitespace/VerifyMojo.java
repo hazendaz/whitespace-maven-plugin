@@ -1,7 +1,7 @@
 /*
  * whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
  *
- * Copyright 2011-2024 dantwining, Hazendaz.
+ * Copyright 2011-2025 dantwining, Hazendaz.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of The Apache Software License,
