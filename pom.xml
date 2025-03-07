@@ -3,7 +3,7 @@
 
     whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
 
-    Copyright 2011-2024 dantwining, Hazendaz.
+    Copyright 2011-2025 dantwining, Hazendaz.
 
     All rights reserved. This program and the accompanying materials
     are made available under the terms of The Apache Software License,
@@ -114,6 +114,49 @@
         <whitespace.skip>true</whitespace.skip>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- Byte Buddy to resolve older usage in powermock. -->
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>${bytebuddy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy-agent</artifactId>
+                <version>${bytebuddy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <!-- Plexus -->
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-utils</artifactId>
+                <version>${plexus-utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-xml</artifactId>
+                <version>${plexus-xml.version}</version>
+            </dependency>
+
+            <!-- Slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- Maven -->
         <dependency>
@@ -129,33 +172,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Plexus -->
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>${plexus-utils.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-xml</artifactId>
-            <version>${plexus-xml.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Junit -->
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${bytebuddy.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-agent</artifactId>
-            <version>${bytebuddy.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.github.hazendaz</groupId>
             <artifactId>javabean-tester</artifactId>
@@ -164,8 +181,7 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
+            <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
