@@ -9,7 +9,7 @@
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * whitespace-maven-plugin (<a href="https://github.com/hazendaz/whitespace-maven-plugin)" target="alexandria_uri">https://github.com/hazendaz/whitespace-maven-plugin)</a></em>
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * Copyright 2011-2023 dantwining, Hazendaz.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * Copyright 2011-2025 dantwining, Hazendaz.</em>
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * All rights reserved. This program and the accompanying materials</em>
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * are made available under the terms of The Apache Software License,</em>
@@ -22,7 +22,7 @@
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">package</strong> com.github.dantwining.whitespace;
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> java.nio.file.Path;
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>  
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.plugin.MojoExecutionException;
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.plugin.MojoFailureException;
@@ -49,7 +49,7 @@
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>      @Test
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">void</strong> execute() <strong class="jxr_keyword">throws</strong> MojoExecutionException, MojoFailureException {
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>          mojo = <strong class="jxr_keyword">new</strong> VerifyMojo();
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"projectBasedir"</span>, <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/test-classes/verify"</span>));
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"projectBasedir"</span>, Path.of(<span class="jxr_string">"target/test-classes/verify"</span>).toFile());
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"extensions"</span>, <span class="jxr_string">"properties"</span>);
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"encoding"</span>, <span class="jxr_string">"UTF-8"</span>);
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>          mojo.execute();
@@ -66,7 +66,7 @@
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      @Test
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">void</strong> executeFailureTest() <strong class="jxr_keyword">throws</strong> MojoExecutionException, MojoFailureException {
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>          mojo = <strong class="jxr_keyword">new</strong> VerifyMojo();
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"projectBasedir"</span>, <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/test-classes/verify"</span>));
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"projectBasedir"</span>, Path.of(<span class="jxr_string">"target/test-classes/verify"</span>).toFile());
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"extensions"</span>, <span class="jxr_string">"xml"</span>);
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>          Whitebox.setInternalState(mojo, <span class="jxr_string">"encoding"</span>, <span class="jxr_string">"UTF-8"</span>);
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>          Assertions.assertThrows(MojoFailureException.<strong class="jxr_keyword">class</strong>, () -&gt; {
@@ -77,6 +77,6 @@
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  }
 </pre>
 <hr/>
-<div id="footer">© 2011–2024 <a href="https://github.com/hazendaz/">hazendaz</a></div>
+<div id="footer">© 2011–2025 <a href="https://github.com/hazendaz/">hazendaz</a></div>
 </body>
 </html>
