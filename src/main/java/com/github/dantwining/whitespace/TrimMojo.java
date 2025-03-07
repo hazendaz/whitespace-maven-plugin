@@ -1,7 +1,7 @@
 /*
  * whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
  *
- * Copyright 2011-2023 dantwining, Hazendaz.
+ * Copyright 2011-2025 dantwining, Hazendaz.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of The Apache Software License,
@@ -49,7 +49,7 @@ public class TrimMojo extends AbstractMojo {
      *
      * @since 1.1.0
      */
-    @Parameter(defaultValue = "css,groovy,html,java,js,json,jsp,jspx,kt,kts,md,properties,scala,sh,toml,wsdl,xhtml,xml,xsd,yaml,yml")
+    @Parameter(defaultValue = Defaults.WHITESPACE_DEFAULT_EXTENSIONS)
     private String extensions;
 
     /**

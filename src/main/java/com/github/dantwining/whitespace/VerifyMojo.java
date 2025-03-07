@@ -47,7 +47,7 @@ public class VerifyMojo extends AbstractMojo {
     /**
      * File extensions to process.
      */
-    @Parameter(defaultValue = "4gl,42m,c,cb,cfg,cpp,css,dat,groovy,h,html,ini,java,js,json,jsonp,jsp,jspx,jsx,ksh,kt,kts,md,mk,msg,pl,pm,properties,reg,scala,scss,sh,sql,toml,ts,tsx,wadl,wsdl,xhtml,xml,xsd,yaml,yml")
+    @Parameter(defaultValue = Defaults.WHITESPACE_DEFAULT_EXTENSIONS)
     private String extensions;
 
     @Override
