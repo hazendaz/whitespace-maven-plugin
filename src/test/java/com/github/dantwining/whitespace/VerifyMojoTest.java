@@ -1,7 +1,7 @@
 /*
  * whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
  *
- * Copyright 2011-2023 dantwining, Hazendaz.
+ * Copyright 2011-2025 dantwining, Hazendaz.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of The Apache Software License,
@@ -14,7 +14,7 @@
  */
 package com.github.dantwining.whitespace;
 
-import java.io.File;
+import java.nio.file.Path;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -41,7 +41,7 @@ public class VerifyMojoTest {
     @Test
     void execute() throws MojoExecutionException, MojoFailureException {
         mojo = new VerifyMojo();
-        Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/verify"));
+        Whitebox.setInternalState(mojo, "projectBasedir", Path.of("target/test-classes/verify").toFile());
         Whitebox.setInternalState(mojo, "extensions", "properties");
         Whitebox.setInternalState(mojo, "encoding", "UTF-8");
         mojo.execute();
@@ -58,7 +58,7 @@ public class VerifyMojoTest {
     @Test
     void executeFailureTest() throws MojoExecutionException, MojoFailureException {
         mojo = new VerifyMojo();
-        Whitebox.setInternalState(mojo, "projectBasedir", new File("target/test-classes/verify"));
+        Whitebox.setInternalState(mojo, "projectBasedir", Path.of("target/test-classes/verify").toFile());
         Whitebox.setInternalState(mojo, "extensions", "xml");
         Whitebox.setInternalState(mojo, "encoding", "UTF-8");
         Assertions.assertThrows(MojoFailureException.class, () -> {
