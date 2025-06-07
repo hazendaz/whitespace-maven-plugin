@@ -93,7 +93,7 @@
         <project.build.outputTimestamp>1741308683</project.build.outputTimestamp>
 
         <!-- Maven Artifacts -->
-        <maven.version>3.9.9</maven.version>
+        <maven.version>3.9.10</maven.version>
         <maven-plugin.version>3.15.1</maven-plugin.version>
         <plexus-utils.version>4.0.2</plexus-utils.version>
         <plexus-xml.version>3.0.2</plexus-xml.version>
