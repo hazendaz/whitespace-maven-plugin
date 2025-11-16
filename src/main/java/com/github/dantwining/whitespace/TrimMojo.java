@@ -53,6 +53,14 @@ public class TrimMojo extends AbstractMojo {
     private String extensions;
 
     /**
+     * The fail on read error.
+     *
+     * @since 1.6.0
+     */
+    @Parameter(property = "failOnReadError", defaultValue = "false")
+    private boolean failOnReadError;
+
+    /**
      * Skip run of plugin.
      *
      * @since 1.2.0
@@ -70,7 +78,7 @@ public class TrimMojo extends AbstractMojo {
 
         boolean verify = false;
         Log mavenLog = getLog();
-        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding, failOnReadError);
     }
 
 }

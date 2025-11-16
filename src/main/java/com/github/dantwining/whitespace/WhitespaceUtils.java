@@ -1,7 +1,7 @@
 /*
  * whitespace-maven-plugin (https://github.com/hazendaz/whitespace-maven-plugin)
  *
- * Copyright 2011-2023 dantwining, Hazendaz.
+ * Copyright 2011-2025 dantwining, Hazendaz.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of The Apache Software License,
@@ -54,6 +54,8 @@ public final class WhitespaceUtils {
      *            the maven log
      * @param encoding
      *            the character encoding used for resources
+     * @param failOnReadError
+     *            the boolean flag to choose treatment for read errors
      *
      * @throws MojoExecutionException
      *             the mojo execution exception
@@ -61,7 +63,7 @@ public final class WhitespaceUtils {
      *             the mojo failure exception
      */
     public static void detectWhitespace(boolean verify, File searchBaseDirectory, String extensions, Log mavenLog,
-            String encoding) throws MojoExecutionException, MojoFailureException {
+            String encoding, boolean failOnReadError) throws MojoExecutionException, MojoFailureException {
 
         if (!searchBaseDirectory.isDirectory()) {
             mavenLog.debug("Skipping non-existent directory: " + searchBaseDirectory.getAbsolutePath());
@@ -81,7 +83,15 @@ public final class WhitespaceUtils {
             try {
                 lines = Files.readAllLines(matchingFile.toPath(), Charset.forName(encoding));
             } catch (IOException e) {
-                throw new MojoExecutionException("Failed to read lines from " + matchingFile.getAbsolutePath(), e);
+                if (failOnReadError) {
+                    throw new MojoExecutionException(
+                            "Failed to read lines from " + matchingFile.getAbsolutePath() + ": " + e.getMessage(), e);
+                } else {
+                    mavenLog.warn(
+                            "Failed to read lines from " + matchingFile.getAbsolutePath() + ": " + e.getMessage());
+                 // Skip this file and continue processing others
+                    continue;
+                }
             }
 
             boolean isFileModified = false;

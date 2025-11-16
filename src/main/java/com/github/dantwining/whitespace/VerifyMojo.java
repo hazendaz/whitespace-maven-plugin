@@ -50,11 +50,19 @@ public class VerifyMojo extends AbstractMojo {
     @Parameter(defaultValue = Defaults.WHITESPACE_DEFAULT_EXTENSIONS)
     private String extensions;
 
+    /**
+     * The fail on read error.
+     *
+     * @since 1.6.0
+     */
+    @Parameter(property = "failOnReadError", defaultValue = "false")
+    private boolean failOnReadError;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         boolean verify = true;
         Log mavenLog = getLog();
-        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);
+        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding, failOnReadError);
     }
 
 }
