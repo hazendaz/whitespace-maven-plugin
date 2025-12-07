@@ -89,7 +89,7 @@ public final class WhitespaceUtils {
                 } else {
                     mavenLog.warn(
                             "Failed to read lines from " + matchingFile.getAbsolutePath() + ": " + e.getMessage());
-                 // Skip this file and continue processing others
+                    // Skip this file and continue processing others
                     continue;
                 }
             }
