@@ -53,6 +53,14 @@ import org.apache.maven.plugins.annotations.Parameter;
     private String extensions;
 
     /**
+     * The fail on read error.
+     *
+     * @since 1.6.0
+     */
+    @Parameter(property = &quot;failOnReadError&quot;, defaultValue = &quot;false&quot;)
+    private boolean failOnReadError;
+
+    /**
      * Skip run of plugin.
      *
      * @since 1.2.0
@@ -63,15 +71,15 @@ import org.apache.maven.plugins.annotations.Parameter;
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         // Check if plugin run should be skipped
-<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (this.skip) {</span>
-<span class="fc" id="L67">            getLog().info(&quot;Whitespace is skipped&quot;);</span>
-<span class="fc" id="L68">            return;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (this.skip) {</span>
+<span class="fc" id="L75">            getLog().info(&quot;Whitespace is skipped&quot;);</span>
+<span class="fc" id="L76">            return;</span>
         }
 
-<span class="fc" id="L71">        boolean verify = false;</span>
-<span class="fc" id="L72">        Log mavenLog = getLog();</span>
-<span class="fc" id="L73">        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);</span>
-<span class="fc" id="L74">    }</span>
+<span class="fc" id="L79">        boolean verify = false;</span>
+<span class="fc" id="L80">        Log mavenLog = getLog();</span>
+<span class="fc" id="L81">        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding, failOnReadError);</span>
+<span class="fc" id="L82">    }</span>
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

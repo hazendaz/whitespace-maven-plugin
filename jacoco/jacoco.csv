@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 whitespace-maven-plugin,com.github.hazendaz.maven.whitespace_maven_plugin,HelpMojo,773,0,112,0,156,0,72,0,16,0
-whitespace-maven-plugin,com.github.dantwining.whitespace,WhitespaceUtils,25,136,4,20,6,31,3,10,0,1
-whitespace-maven-plugin,com.github.dantwining.whitespace,VerifyMojo,0,18,0,0,0,5,0,2,0,2
-whitespace-maven-plugin,com.github.dantwining.whitespace,TrimMojo,0,26,0,2,0,8,0,3,0,2
+whitespace-maven-plugin,com.github.dantwining.whitespace,WhitespaceUtils,37,136,6,20,11,31,4,10,0,1
+whitespace-maven-plugin,com.github.dantwining.whitespace,VerifyMojo,0,20,0,0,0,5,0,2,0,2
+whitespace-maven-plugin,com.github.dantwining.whitespace,TrimMojo,0,28,0,2,0,8,0,3,0,2

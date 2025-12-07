@@ -50,12 +50,20 @@ import org.apache.maven.plugins.annotations.Parameter;
     @Parameter(defaultValue = Defaults.WHITESPACE_DEFAULT_EXTENSIONS)
     private String extensions;
 
+    /**
+     * The fail on read error.
+     *
+     * @since 1.6.0
+     */
+    @Parameter(property = &quot;failOnReadError&quot;, defaultValue = &quot;false&quot;)
+    private boolean failOnReadError;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-<span class="fc" id="L55">        boolean verify = true;</span>
-<span class="fc" id="L56">        Log mavenLog = getLog();</span>
-<span class="fc" id="L57">        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding);</span>
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L63">        boolean verify = true;</span>
+<span class="fc" id="L64">        Log mavenLog = getLog();</span>
+<span class="fc" id="L65">        WhitespaceUtils.detectWhitespace(verify, projectBasedir, extensions, mavenLog, encoding, failOnReadError);</span>
+<span class="fc" id="L66">    }</span>
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
