@@ -2,6 +2,7 @@ whitespace-maven-plugin
 =======================
 
 [![Java CI](https://github.com/hazendaz/whitespace-maven-plugin/workflows/Java%20CI/badge.svg)](https://github.com/hazendaz/whitespace-maven-plugin/actions?query=workflow%3A%22Java+CI%22)
+[![Coverage Status](https://coveralls.io/repos/github/hazendaz/whitespace-maven-plugin/badge.svg?branch=modernize)](https://coveralls.io/github/hazendaz/whitespace-maven-plugin?branch=modernize)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.hazendaz.maven/whitespace-maven-plugin.svg)](https://central.sonatype.com/artifact/com.github.hazendaz.maven/whitespace-maven-plugin)
 [![Apache 2](http://img.shields.io/badge/license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -67,7 +68,7 @@ To enable the plugin for every Maven compilation, add the following to your pom 
     <plugin>
         <groupId>com.github.hazendaz.maven</groupId>
         <artifactId>whitespace-maven-plugin</artifactId>
-        <version>1.4.0</version>
+        <version>1.6.0</version>
         <executions>
             <execution>
                 <phase>process-sources</phase>
@@ -89,9 +90,9 @@ To run a verification only, the setup is the same with ```verify``` mojo instead
 ## Requirements ##
 
 - Requires java 8 or better to run
-- Requires maven 3.3.9 or better to run
+- Requires maven 3.6.3 or better to run
 - Requires java 11 to build
-- Requires maven 3.9.2 to build
+- Requires maven 3.9.12 to build
 
 ## Forked usage ##
 
