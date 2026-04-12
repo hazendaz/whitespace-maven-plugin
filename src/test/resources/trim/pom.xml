@@ -1,0 +1,30 @@
+<!--
+
+    SPDX-License-Identifier: Apache-2.0
+    Copyright 2011-2026 Hazendaz
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>test</groupId>
+    <artifactId>test-trim</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.hazendaz.maven</groupId>
+                <artifactId>whitespace-maven-plugin</artifactId>
+                <version>1.6.1-SNAPSHOT</version>
+                <configuration>
+                    <extensions>xml</extensions>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
