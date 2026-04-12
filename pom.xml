@@ -86,12 +86,13 @@
         <maven.version>3.9.14</maven.version>
         <maven-plugin.version>3.15.2</maven-plugin.version>
         <plexus-utils.version>4.0.3</plexus-utils.version>
-        <plexus-xml.version>3.0.2</plexus-xml.version>
+        <plexus-xml.version>4.1.1</plexus-xml.version>
 
         <!-- Junit -->
         <bytebuddy.version>1.18.8-jdk5</bytebuddy.version>
         <javabean-tester.version>2.12.0</javabean-tester.version>
         <junit.version>6.0.3</junit.version>
+        <maven-plugin-testing-harness.version>3.5.1</maven-plugin-testing-harness.version>
         <powermock.version>2.0.9</powermock.version>
         <slf4j.version>2.0.17</slf4j.version>
 
@@ -138,6 +139,18 @@
                 <version>${plexus-xml.version}</version>
             </dependency>
 
+            <!-- Sisu - force version to match maven-plugin-api to satisfy convergence -->
+            <dependency>
+                <groupId>org.eclipse.sisu</groupId>
+                <artifactId>org.eclipse.sisu.plexus</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.sisu</groupId>
+                <artifactId>org.eclipse.sisu.inject</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
             <!-- Slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -178,6 +191,38 @@
             <groupId>org.powermock</groupId>
             <artifactId>powermock-reflect</artifactId>
             <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Maven Plugin Testing Harness -->
+        <dependency>
+            <groupId>org.apache.maven.plugin-testing</groupId>
+            <artifactId>maven-plugin-testing-harness</artifactId>
+            <version>${maven-plugin-testing-harness.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>${maven.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-compat</artifactId>
+            <version>${maven.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-xml</artifactId>
+            <version>${plexus-xml.version}</version>
             <scope>test</scope>
         </dependency>
 
