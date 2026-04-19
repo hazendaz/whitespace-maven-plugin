@@ -35,13 +35,6 @@ import org.w3c.dom.Node;
 public class HelpMojoTest {
 
     /**
-     * Instantiates a new help mojo test.
-     */
-    public HelpMojoTest() {
-        // Default constructor
-    }
-
-    /**
      * Execute covers invalid line and indent values and detailed output.
      */
     @Test
