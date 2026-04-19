@@ -138,8 +138,9 @@ public class HelpMojoTest {
         try {
             return (Node) method.invoke(null, doc.getDocumentElement(), childName);
         } catch (InvocationTargetException ex) {
-            if (ex.getCause() instanceof Exception cause) {
-                throw cause;
+            Throwable cause = ex.getCause();
+            if (cause instanceof Exception) {
+                throw (Exception) cause;
             }
             throw ex;
         }
