@@ -59,7 +59,7 @@ public class HelpMojoTest {
         verify(mockLog).warn(contains("lineLength"));
         verify(mockLog).warn(contains("indentSize"));
         verify(mockLog).info(contains("Available parameters:"));
-        verify(mockLog).info(contains("User property: project.build.sourceEncoding"));
+        verify(mockLog).info(contains("User property: encoding"));
     }
 
     /**
