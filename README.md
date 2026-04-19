@@ -2,7 +2,7 @@ whitespace-maven-plugin
 =======================
 
 [![Java CI](https://github.com/hazendaz/whitespace-maven-plugin/workflows/Java%20CI/badge.svg)](https://github.com/hazendaz/whitespace-maven-plugin/actions?query=workflow%3A%22Java+CI%22)
-[![Coverage Status](https://coveralls.io/repos/github/hazendaz/whitespace-maven-plugin/badge.svg?branch=modernize)](https://coveralls.io/github/hazendaz/whitespace-maven-plugin?branch=modernize)
+[![Coverage Status](https://coveralls.io/repos/github/hazendaz/whitespace-maven-plugin/badge.svg?branch=modernize)](https://coveralls.io/github/hazendaz/whitespace-maven-plugin?branch=master)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.hazendaz.maven/whitespace-maven-plugin.svg)](https://central.sonatype.com/artifact/com.github.hazendaz.maven/whitespace-maven-plugin)
 [![Apache 2](http://img.shields.io/badge/license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
