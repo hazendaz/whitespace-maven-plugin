@@ -89,7 +89,7 @@
         <plexus-xml.version>4.1.1</plexus-xml.version>
 
         <!-- Junit -->
-        <bytebuddy.version>1.18.8-jdk5</bytebuddy.version>
+        <bytebuddy.version>1.18.10</bytebuddy.version>
         <javabean-tester.version>2.12.1</javabean-tester.version>
         <junit.version>6.1.0</junit.version>
         <maven-plugin-testing-harness.version>3.5.1</maven-plugin-testing-harness.version>
