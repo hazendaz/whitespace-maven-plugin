@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"com.github.dantwining.whitespace"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"com.github.dantwining.whitespace"},{"l":"com.github.hazendaz.maven.whitespace_maven_plugin"}];updateSearchResults();
