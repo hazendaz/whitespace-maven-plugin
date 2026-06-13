@@ -12,49 +12,19 @@ The whitespace plugin will remove any trailing whitespace from files in your pro
 
 Default file extensions:
 
-- 4gl
-- 42m
-- c
-- cb
-- cfg
-- cpp
-- css
-- groovy
-- dat
-- groovy
-- h
-- html
-- ini
-- java
-- js
-- json
-- jsonp
-- jsp
-- jspx
-- jsx
-- ksh
-- kt
-- kts
-- md
-- mk
-- msg
-- pl
-- pm
-- properties
-- scala
-- scss
-- sh
-- sql
-- toml
-- ts
-- tsx
-- wadl
-- wsdl
-- xhtml
-- xml
-- xsd
-- yaml
-- yml
+| Column 1 | Column 2 | Column 3 | Column 4 |
+|----------|----------|----------|----------|
+| 4gl | 42m | c | cb |
+| cfg | cpp | css | groovy |
+| dat | h | html | ini |
+| java | js | json | jsonp |
+| jsp | jspx | jsx | ksh |
+| kt | kts | md | mk |
+| msg | pl | pm | properties |
+| scala | scss | sh | sql |
+| toml | ts | tsx | wadl |
+| wsdl | xhtml | xml | xsd |
+| yaml | yml |  |  |
 
 ## Usage
 
@@ -88,10 +58,11 @@ To run a verification only, the setup is the same with ```verify``` mojo instead
 
 ## Requirements ##
 
-- Requires java 8 or better to run
+- Requires java 11 or better to run
 - Requires maven 3.6.3 or better to run
-- Requires java 11 to build
-- Requires maven 3.9.12 to build
+
+- Requires java 21 to build
+- Requires maven 3.9.16 to build
 
 ## Forked usage ##
 
