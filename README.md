@@ -41,7 +41,6 @@ Default file extensions:
 - pl
 - pm
 - properties
-- reg
 - scala
 - scss
 - sh
@@ -84,7 +83,7 @@ To run a verification only, the setup is the same with ```verify``` mojo instead
 ## Options
 
 - ```projectBasedir``` is defaulted to ${project.basedir}/src and can be overridden.  If 'src' is dropped and simply using basedir, do note that multi module build will effective run more than once against module files.
-- ```entensions``` A comma delimited list of files to format with default of "4gl,42m,c,cb,cfg,cpp,css,dat,groovy,h,html,ini,java,js,json,jsonp,jsp,jspx,jsx,ksh,kt,kts,md,mk,msg,pl,pm,properties,reg,scala,scss,sh,sql,toml,ts,tsx,wadl,wsdl,xhtml,xml,xsd,yaml,yml".
+- ```entensions``` A comma delimited list of files to format with default of "4gl,42m,c,cb,cfg,cpp,css,dat,groovy,h,html,ini,java,js,json,jsonp,jsp,jspx,jsx,ksh,kt,kts,md,mk,msg,pl,pm,properties,scala,scss,sh,sql,toml,ts,tsx,wadl,wsdl,xhtml,xml,xsd,yaml,yml".
 - ```encoding``` The encoding to use for the project with default set as ```project.build.sourceEncoding```
 
 ## Requirements ##
