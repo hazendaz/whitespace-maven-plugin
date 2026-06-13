@@ -12,7 +12,7 @@ The whitespace plugin will remove any trailing whitespace from files in your pro
 
 Default file extensions:
 
-| Column 1 | Column 2 | Column 3 | Column 4 |
+| Extensions | Extensions | Extensions | Extensions |
 |----------|----------|----------|----------|
 | 4gl | 42m | c | cb |
 | cfg | cpp | css | groovy |
