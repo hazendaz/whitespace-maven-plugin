@@ -18,7 +18,7 @@
 
     <groupId>com.github.hazendaz.maven</groupId>
     <artifactId>whitespace-maven-plugin</artifactId>
-    <version>1.6.1-SNAPSHOT</version>
+    <version>1.7.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>whitespace-maven-plugin</name>
@@ -46,7 +46,7 @@
     <scm>
         <connection>scm:git:git@github.com:hazendaz/whitespace-maven-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:hazendaz/whitespace-maven-plugin.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>whitespace-maven-plugin-1.7.0</tag>
         <url>https://github.com/hazendaz/whitespace-maven-plugin</url>
     </scm>
     <issueManagement>
@@ -80,7 +80,7 @@
         <module.name>com.github.hazendaz.maven.whitespace</module.name>
 
         <!-- Reproducible Builds -->
-        <project.build.outputTimestamp>1765146692</project.build.outputTimestamp>
+        <project.build.outputTimestamp>1781317264</project.build.outputTimestamp>
 
         <!-- Maven Artifacts -->
         <maven.version>3.9.16</maven.version>
