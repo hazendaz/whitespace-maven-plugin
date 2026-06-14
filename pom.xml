@@ -90,7 +90,7 @@
 
         <!-- Junit -->
         <bytebuddy.version>1.18.10</bytebuddy.version>
-        <javabean-tester.version>2.12.1</javabean-tester.version>
+        <javabean-tester.version>2.12.2</javabean-tester.version>
         <junit.version>6.1.0</junit.version>
         <maven-plugin-testing-harness.version>3.5.1</maven-plugin-testing-harness.version>
         <powermock.version>2.0.9</powermock.version>
