@@ -1,4 +1,4 @@
-name: Java Tests Maven 3.6.3
+name: Java Tests Maven 3.8.9
 
 on: [push, pull_request]
 
@@ -9,13 +9,13 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  maven-version: 3.6.3
+  maven-version: 3.8.9
 
 jobs:
   test:
     runs-on: windows-latest
     timeout-minutes: 30
-    name: Tests Maven 3.6.3 with java 21
+    name: Tests Maven 3.8.9 with java 21
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
