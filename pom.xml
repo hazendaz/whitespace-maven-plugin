@@ -74,7 +74,7 @@
         <checkstyle.config>checkstyle-4space.xml</checkstyle.config>
 
         <!-- Coverage -->
-        <jacoco.minimum.coverage>0.16</jacoco.minimum.coverage>
+        <jacoco.minimum.coverage>0.86</jacoco.minimum.coverage>
 
         <!-- Automatic Module Name -->
         <module.name>com.github.hazendaz.maven.whitespace</module.name>
@@ -99,6 +99,7 @@
         <!-- Direct Dependencies -->
         <io.version>2.22.0</io.version>
         <lang3.version>3.21.0</lang3.version>
+        <logging.version>1.4.0</logging.version>
 
         <!-- Skip formatting plugins that will break test cases and unnecessary in this case. -->
         <spotless.apply.skip>true</spotless.apply.skip>
@@ -202,22 +203,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>${maven.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-compat</artifactId>
-            <version>${maven.version}</version>
-            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.codehaus.plexus</groupId>
@@ -232,6 +227,12 @@
             <artifactId>commons-io</artifactId>
             <version>${io.version}</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${logging.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
