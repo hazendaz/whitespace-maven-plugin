@@ -7,143 +7,103 @@ package com.github.dantwining.whitespace;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.apache.maven.api.plugin.testing.InjectMojo;
+import org.apache.maven.api.plugin.testing.MojoParameter;
+import org.apache.maven.api.plugin.testing.MojoTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 /**
- * The Class TrimMojoHarnessTest uses the Maven Plugin Testing Harness to test TrimMojo.
- * <p>
- * Tests are written using JUnit 5 while leveraging {@link org.apache.maven.plugin.testing.AbstractMojoTestCase} for
- * Plexus container setup and mojo lookup by goal name from a POM file.
- * </p>
+ * Tests {@link TrimMojo} using the Maven Plugin Testing Harness JUnit 5 extension.
  */
-public class TrimMojoHarnessTest {
-
-    /** The harness delegate providing Plexus container and mojo lookup utilities. */
-    private final MojoTestHarness harness = new MojoTestHarness();
+@MojoTest
+class TrimMojoHarnessTest {
 
     /**
      * Instantiates a new trim mojo harness test.
      */
-    public TrimMojoHarnessTest() {
+    TrimMojoHarnessTest() {
         // Default constructor
     }
 
     /**
-     * Sets up the Plexus container before each test.
+     * Harness test: trim mojo is correctly instantiated from POM configuration.
      *
-     * @throws Exception
-     *             if the harness setup fails
-     */
-    @BeforeEach
-    void setUp() throws Exception {
-        harness.setUp();
-    }
-
-    /**
-     * Tears down the Plexus container after each test.
-     *
-     * @throws Exception
-     *             if the harness teardown fails
-     */
-    @AfterEach
-    void tearDown() throws Exception {
-        harness.tearDown();
-    }
-
-    /**
-     * Harness test: trim mojo is correctly looked up from POM configuration.
-     *
-     * @throws Exception
-     *             if the mojo lookup fails
+     * @param mojo
+     *            the configured mojo
      */
     @Test
-    void lookupTrimMojoFromPom() throws Exception {
-        File pom = harness.resolveTestFile("src/test/resources/trim/pom.xml");
-        assertNotNull(pom);
-
-        TrimMojo mojo = (TrimMojo) harness.lookupMojo("trim", pom);
-        assertNotNull(mojo, "TrimMojo should not be null when looked up from POM");
+    @InjectMojo(goal = "trim", pom = "src/test/resources/trim/pom.xml")
+    void lookupTrimMojoFromPom(TrimMojo mojo) {
+        assertNotNull(mojo, "TrimMojo should not be null when injected from POM");
     }
 
     /**
      * Harness test: trim mojo executes successfully against a directory with whitespace files.
      *
+     * @param mojo
+     *            the configured mojo
      * @param tempDir
      *            a temporary directory populated with test XML files
      *
-     * @throws Exception
-     *             if the mojo lookup or execution fails
+     * @throws IOException
+     *             if file creation fails
      */
     @Test
-    void trimMojoExecutesSuccessfully(@TempDir Path tempDir) throws Exception {
+    @InjectMojo(goal = "trim", pom = "src/test/resources/trim/pom.xml")
+    @MojoParameter(name = "extensions", value = "xml")
+    @MojoParameter(name = "encoding", value = "UTF-8")
+    @MojoParameter(name = "skip", value = "false")
+    @MojoParameter(name = "failOnReadError", value = "false")
+    void trimMojoExecutesSuccessfully(TrimMojo mojo, @TempDir Path tempDir) throws IOException {
         populateWithTrailingWhitespace(tempDir, "trim.xml");
 
-        File pom = harness.resolveTestFile("src/test/resources/trim/pom.xml");
-        TrimMojo mojo = (TrimMojo) harness.lookupMojo("trim", pom);
         assertNotNull(mojo);
-
-        harness.setVariableValueToObject(mojo, "projectBasedir", tempDir.toFile());
-        harness.setVariableValueToObject(mojo, "extensions", "xml");
-        harness.setVariableValueToObject(mojo, "encoding", "UTF-8");
-        harness.setVariableValueToObject(mojo, "skip", false);
-        harness.setVariableValueToObject(mojo, "failOnReadError", false);
-
         assertDoesNotThrow(mojo::execute);
     }
 
     /**
      * Harness test: trim mojo skips execution when skip is set to true.
      *
+     * @param mojo
+     *            the configured mojo
      * @param tempDir
      *            a temporary directory
      *
-     * @throws Exception
-     *             if the mojo lookup fails
+     * @throws IOException
+     *             if file creation fails
      */
     @Test
-    void trimMojoSkipsWhenConfigured(@TempDir Path tempDir) throws Exception {
+    @InjectMojo(goal = "trim", pom = "src/test/resources/trim/pom.xml")
+    @MojoParameter(name = "extensions", value = "xml")
+    @MojoParameter(name = "encoding", value = "UTF-8")
+    @MojoParameter(name = "skip", value = "true")
+    void trimMojoSkipsWhenConfigured(TrimMojo mojo, @TempDir Path tempDir) throws IOException {
         populateWithTrailingWhitespace(tempDir, "skip.xml");
 
-        File pom = harness.resolveTestFile("src/test/resources/trim/pom.xml");
-        TrimMojo mojo = (TrimMojo) harness.lookupMojo("trim", pom);
         assertNotNull(mojo);
-
-        harness.setVariableValueToObject(mojo, "projectBasedir", tempDir.toFile());
-        harness.setVariableValueToObject(mojo, "extensions", "xml");
-        harness.setVariableValueToObject(mojo, "encoding", "UTF-8");
-        harness.setVariableValueToObject(mojo, "skip", true);
-
         assertDoesNotThrow(mojo::execute);
     }
 
     /**
-     * Harness test: trim mojo handles non-existent directory gracefully.
+     * Harness test: trim mojo handles a non-existent directory gracefully.
      *
+     * @param mojo
+     *            the configured mojo
      * @param tempDir
      *            a temporary directory used to derive a non-existent sub-path
-     *
-     * @throws Exception
-     *             if the mojo lookup fails
      */
     @Test
-    void trimMojoHandlesNonExistentDirectory(@TempDir Path tempDir) throws Exception {
-        File pom = harness.resolveTestFile("src/test/resources/trim/pom.xml");
-        TrimMojo mojo = (TrimMojo) harness.lookupMojo("trim", pom);
+    @InjectMojo(goal = "trim", pom = "src/test/resources/trim/pom.xml")
+    @MojoParameter(name = "extensions", value = "xml")
+    @MojoParameter(name = "encoding", value = "UTF-8")
+    @MojoParameter(name = "skip", value = "false")
+    void trimMojoHandlesNonExistentDirectory(TrimMojo mojo, @TempDir Path tempDir) {
         assertNotNull(mojo);
-
-        harness.setVariableValueToObject(mojo, "projectBasedir", tempDir.resolve("nonexistent").toFile());
-        harness.setVariableValueToObject(mojo, "extensions", "xml");
-        harness.setVariableValueToObject(mojo, "encoding", "UTF-8");
-        harness.setVariableValueToObject(mojo, "skip", false);
-
         assertDoesNotThrow(mojo::execute);
     }
 
