@@ -7,7 +7,9 @@ package com.github.dantwining.whitespace;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -24,13 +26,6 @@ import org.junit.jupiter.api.io.TempDir;
 class TrimMojoHarnessTest {
 
     /**
-     * Instantiates a new trim mojo harness test.
-     */
-    TrimMojoHarnessTest() {
-        // Default constructor
-    }
-
-    /**
      * Harness test: trim mojo is correctly instantiated from POM configuration.
      *
      * @param mojo
@@ -43,7 +38,7 @@ class TrimMojoHarnessTest {
     }
 
     /**
-     * Harness test: trim mojo executes successfully against a directory with whitespace files.
+     * Harness test: trim mojo executes successfully against a temporary directory.
      *
      * @param mojo
      *            the configured mojo
@@ -61,6 +56,7 @@ class TrimMojoHarnessTest {
     @MojoParameter(name = "failOnReadError", value = "false")
     void trimMojoExecutesSuccessfully(TrimMojo mojo, @TempDir Path tempDir) throws IOException {
         populateWithTrailingWhitespace(tempDir, "trim.xml");
+        setProjectBasedir(mojo, tempDir.toFile());
 
         assertNotNull(mojo);
         assertDoesNotThrow(mojo::execute);
@@ -84,6 +80,7 @@ class TrimMojoHarnessTest {
     @MojoParameter(name = "skip", value = "true")
     void trimMojoSkipsWhenConfigured(TrimMojo mojo, @TempDir Path tempDir) throws IOException {
         populateWithTrailingWhitespace(tempDir, "skip.xml");
+        setProjectBasedir(mojo, tempDir.toFile());
 
         assertNotNull(mojo);
         assertDoesNotThrow(mojo::execute);
@@ -103,8 +100,28 @@ class TrimMojoHarnessTest {
     @MojoParameter(name = "encoding", value = "UTF-8")
     @MojoParameter(name = "skip", value = "false")
     void trimMojoHandlesNonExistentDirectory(TrimMojo mojo, @TempDir Path tempDir) {
+        setProjectBasedir(mojo, tempDir.resolve("nonexistent").toFile());
+
         assertNotNull(mojo);
         assertDoesNotThrow(mojo::execute);
+    }
+
+    /**
+     * Sets the mojo project base directory.
+     *
+     * @param mojo
+     *            the mojo to configure
+     * @param projectBasedir
+     *            the directory to process
+     */
+    private static void setProjectBasedir(TrimMojo mojo, File projectBasedir) {
+        try {
+            Field field = TrimMojo.class.getDeclaredField("projectBasedir");
+            field.setAccessible(true);
+            field.set(mojo, projectBasedir);
+        } catch (ReflectiveOperationException exception) {
+            throw new IllegalStateException("Unable to set projectBasedir", exception);
+        }
     }
 
     /**
