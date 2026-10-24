@@ -531,11 +531,11 @@
   }, {
     "groupId" : "org.mockito",
     "artifactId" : "mockito-core",
-    "version" : "4.11.0",
+    "version" : "5.24.0",
     "scope" : "test",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:TG8Sy89IouP2/pjWF1nO+Pkn0He6+WqJ3XJ0s0Ml15PZ2ihdNaPMh0aFmJ3P3ur8OPHWSxaYccskarkXJVnE2Q=="
+    "integrity" : "sha512:XulhYPRPYvplkHnH7SyExkfOl7fF9X1jsWS06ujJkUC2dZzTmV5NzVCn81ljCUo1V4uja9a8V3Hmvzl6yA68Rw=="
   }, {
     "groupId" : "org.mockito",
     "artifactId" : "mockito-junit-jupiter",
@@ -547,11 +547,11 @@
   }, {
     "groupId" : "org.objenesis",
     "artifactId" : "objenesis",
-    "version" : "3.0.1",
+    "version" : "3.3",
     "scope" : "test",
     "type" : "jar",
     "optional" : false,
-    "integrity" : "sha512:okGTGobaqqFsZxe1UQnyDf40uokE3yoCf80+i7HWW0wTrwpuCqjGbIA1E2BFL25intd8PnQHfmAuDtZxu6KBAw=="
+    "integrity" : "sha512:H6mQ0VvRefB/+8Rg1YCm/QVi5F3ui9SpQFkXU2t49FwNb2RLZ/hdeBx1iqVu/5Cu8j7tzJvX9f+Ieme3Fgg+YQ=="
   }, {
     "groupId" : "org.opentest4j",
     "artifactId" : "opentest4j",
