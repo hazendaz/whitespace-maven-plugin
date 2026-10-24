@@ -66,6 +66,11 @@ public class WhitespaceUtilsTest {
 
     /**
      * Non-existent directory is skipped with a debug log message.
+     *
+     * @throws MojoExecutionException
+     *             the mojo execution exception
+     * @throws MojoFailureException
+     *             the mojo failure exception
      */
     @Test
     void detectWhitespace_nonExistentDirectory() throws MojoExecutionException, MojoFailureException {
@@ -76,6 +81,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * Trim mode does not modify clean files.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_trimCleanFile() throws Exception {
@@ -90,6 +98,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * Trim mode strips trailing whitespace from files and writes them back.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_trimFilesWithTrailingWhitespace() throws Exception {
@@ -104,6 +115,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * Verify mode does not throw when all files are clean.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_verifyCleanFiles() throws Exception {
@@ -116,6 +130,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * Verify mode throws MojoFailureException when trailing whitespace is found.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_verifyFilesWithTrailingWhitespace() throws Exception {
@@ -128,6 +145,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * When failOnReadError is true and a file has invalid encoding, a MojoExecutionException is thrown.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_failOnReadError_true_throwsException() throws Exception {
@@ -140,6 +160,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * When failOnReadError is false and a file has invalid encoding, a warning is logged and processing continues.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_failOnReadError_false_logsWarning() throws Exception {
@@ -153,6 +176,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * When debug is enabled and whitespace is found, debug messages include line numbers.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_debugLoggingWithWhitespace() throws Exception {
@@ -167,6 +193,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * Multiple extensions are processed correctly, detecting whitespace across all matched files.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_multipleExtensions() throws Exception {
@@ -181,6 +210,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * Verify mode collects multiple files with whitespace and reports all in the failure message.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_verifyReportsMultipleFilesWithWhitespace() throws Exception {
@@ -198,6 +230,9 @@ public class WhitespaceUtilsTest {
 
     /**
      * When failOnReadError is false, processing continues to other files after a read error.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void detectWhitespace_failOnReadError_false_continuesProcessing() throws Exception {

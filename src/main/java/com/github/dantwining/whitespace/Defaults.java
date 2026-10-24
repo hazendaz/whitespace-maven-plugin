@@ -4,6 +4,9 @@
  */
 package com.github.dantwining.whitespace;
 
+/**
+ * The Class Defaults.
+ */
 public final class Defaults {
 
     /**

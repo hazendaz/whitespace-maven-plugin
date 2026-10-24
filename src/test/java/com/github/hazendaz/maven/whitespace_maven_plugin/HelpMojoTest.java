@@ -74,6 +74,9 @@ public class HelpMojoTest {
 
     /**
      * getPropertyFromExpression handles valid and invalid expressions.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void getPropertyFromExpression() throws Exception {
@@ -84,6 +87,9 @@ public class HelpMojoTest {
 
     /**
      * toLines and getIndentLevel handle wrapping and indentation details.
+     *
+     * @throws Exception
+     *             the exception
      */
     @SuppressWarnings("unchecked")
     @Test
@@ -102,6 +108,9 @@ public class HelpMojoTest {
 
     /**
      * getSingleChild and findSingleChild throw on duplicates and missing child elements.
+     *
+     * @throws Exception
+     *             the exception
      */
     @Test
     void xmlChildHelpersErrorPaths() throws Exception {
@@ -114,17 +123,56 @@ public class HelpMojoTest {
         assertNull(invokePrivateNode("findSingleChild", missingDoc, "a"));
     }
 
+    /**
+     * Build xml.
+     *
+     * @param xml
+     *            the xml
+     *
+     * @return the document
+     *
+     * @throws Exception
+     *             the exception
+     */
     private static Document buildXml(String xml) throws Exception {
         return DocumentBuilderFactory.newInstance().newDocumentBuilder()
                 .parse(new java.io.ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
     }
 
+    /**
+     * Invoke private static string.
+     *
+     * @param methodName
+     *            the method name
+     * @param argument
+     *            the argument
+     *
+     * @return the string
+     *
+     * @throws Exception
+     *             the exception
+     */
     private static String invokePrivateStaticString(String methodName, String argument) throws Exception {
         Method method = HelpMojo.class.getDeclaredMethod(methodName, String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, argument);
     }
 
+    /**
+     * Invoke private node.
+     *
+     * @param methodName
+     *            the method name
+     * @param doc
+     *            the doc
+     * @param childName
+     *            the child name
+     *
+     * @return the node
+     *
+     * @throws Exception
+     *             the exception
+     */
     private static Node invokePrivateNode(String methodName, Document doc, String childName) throws Exception {
         Method method = HelpMojo.class.getDeclaredMethod(methodName, Node.class, String.class);
         method.setAccessible(true);
