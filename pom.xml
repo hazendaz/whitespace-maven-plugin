@@ -99,7 +99,7 @@
 
         <!-- Direct Dependencies -->
         <io.version>2.22.0</io.version>
-        <lang3.version>3.21.0</lang3.version>
+        <lang3.version>3.22.0</lang3.version>
         <logging.version>1.4.0</logging.version>
 
         <!-- Skip formatting plugins that will break test cases and unnecessary in this case. -->
